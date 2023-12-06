@@ -1,0 +1,20 @@
+Fitter Status : Successful - Mon Dec  4 09:53:16 2023
+Quartus Prime Version : 22.1std.0 Build 915 10/25/2022 SC Standard Edition
+Revision Name : wrap
+Top-level Entity Name : wrap
+Family : Cyclone V
+Device : 5CSXFC6D6F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 442 / 41,910 ( 1 % )
+Total registers : 234
+Total pins : 88 / 499 ( 18 % )
+Total virtual pins : 0
+Total block memory bits : 49,408 / 5,662,720 ( < 1 % )
+Total RAM Blocks : 7 / 553 ( 1 % )
+Total DSP Blocks : 4 / 112 ( 4 % )
+Total HSSI RX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 9 ( 0 % )
+Total HSSI TX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 9 ( 0 % )
+Total PLLs : 0 / 15 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

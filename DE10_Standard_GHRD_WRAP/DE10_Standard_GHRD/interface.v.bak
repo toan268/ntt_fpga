@@ -1,0 +1,101 @@
+module interface(
+	input wire clk_i,
+	input wire rst_i,
+	input wire				read_enable,
+	input wire	[31:0] 	datain_from,
+	input wire  			readdata_valid,
+	input wire				rd_err,
+	
+	output wire 				read_enable_to,
+	output reg [31:0]		dataout_to,
+	output current_state,
+	output reg done
+	);
+reg [3:0] current_state;
+parameter IDLE=0;
+parameter START=1;
+parameter READ=2;
+parameter WAIT=3;
+
+reg [23:0] count;
+wire [24-1:0] max_address2;
+assign max_address2 = {24{1'b1}};
+assign max_avm_address = (count == max_address2) ? 1'b1 : 1'b0;
+reg [3:0] wr_burst_count;
+
+always @(posedge clk_i or posedge rst_i) begin
+	if(rst_i) begin
+		dataout_to <= 0;
+		current_state <= IDLE;
+		done <= 0;
+		read_enable_to <= 0;
+	end
+	else begin
+		case(current_state)
+		IDLE: begin
+			if(read_enable) begin
+				current_state <= START;
+				
+			end
+			else begin
+				current_state <= IDLE;
+			end
+		end
+		START: begin
+			if(readdata_valid) begin
+				current_state <= WAIT;
+				dataout_to <= datain_from;
+			end
+			else begin
+				current_state <= START;
+				dataout_to <= 0;
+			end
+		end
+		WAIT: begin
+			if (rd_err & !max_avm_address ) begin 
+				if (wr_burst_count == 0) begin 
+					wr_burst_count <= 0;
+					count <= count + 1;
+					current_state <= WAIT;
+				end
+			else begin 
+				wr_burst_count <= wr_burst_count + 1;			
+		end
+	end
+	else if (rd_err & max_avm_address) begin 
+		if (wr_burst_count == 0) begin 
+			count <= 0;
+			wr_burst_count <= 0;	
+			current_state <= START;
+		end
+		else begin 
+			wr_burst_count <= wr_burst_count + 1;
+		end
+	end
+	else if(!rd_err & !max_avm_address)begin 
+		if (wr_burst_count == 0) begin 
+			wr_burst_count <= 0;
+			count <= count + 1;
+			current_state <= WAIT;
+		end
+		else begin 
+			wr_burst_count <= wr_burst_count + 1;			
+		end
+	end
+	else if(!rd_err & max_avm_address)begin 
+		if (wr_burst_count == 0) begin 
+			wr_burst_count <= 0;
+			count <= 0;
+			current_state <= IDLE;
+			done <= 1;
+		end
+		else begin 
+			wr_burst_count <= wr_burst_count + 1;			
+		end	
+	end	
+		end
+	end
+end
+assign read_enable_to = (current_state == START)?1:0;
+
+endmodule 

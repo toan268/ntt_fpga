@@ -1,0 +1,174 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/15/2023 04:09:11 PM
+// Design Name: 
+// Module Name: ROM
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module ROM(clk,rst,address1,address2,tw1,tw2);
+
+	input clk,rst;
+	input [7:0] address1,address2;
+	output reg [31:0] tw1,tw2;
+	// Declare the ROM variable
+	reg [31:0] mem_ROM [127:0];
+
+
+	// Initialize the ROM with $readmemb.  Put the memory contents
+	// in the file dual_port_rom_init.txt.  Without this file,
+	// this design will not compile.
+	// See Verilog LRM 1364-2001 Section 17.2.8 for details on the
+	// format of this file.
+
+	initial 
+	begin 
+		mem_ROM[0] = -32'sd1044;
+		mem_ROM[1] = -32'sd758;
+		mem_ROM[2] = -32'sd359;
+		mem_ROM[3] = -32'sd1517;
+		mem_ROM[4] = 32'sd1493;
+		mem_ROM[5] = 32'sd1422;
+		mem_ROM[6] = 32'sd287;
+		mem_ROM[7] = 32'sd202;
+		mem_ROM[8] = -32'sd171;
+		mem_ROM[9] = 32'sd622;
+		mem_ROM[10] = 32'sd1577;
+		mem_ROM[11] = 32'sd182;
+		mem_ROM[12] = 32'sd962;
+		mem_ROM[13] = -32'sd1202;
+		mem_ROM[14] = -32'sd1474;
+		mem_ROM[15] = 32'sd1468;
+		mem_ROM[16] = 32'sd573;
+		mem_ROM[17] = -32'sd1325;
+		mem_ROM[18] = 32'sd264;
+		mem_ROM[19] = 32'sd383;
+		mem_ROM[20] = -32'sd829;
+		mem_ROM[21] = 32'sd1458;
+		mem_ROM[22] = -32'sd1602;
+		mem_ROM[23] = -32'sd130;
+		mem_ROM[24] = -32'sd681;
+		mem_ROM[25] = 32'sd1017;
+		mem_ROM[26] = 32'sd732;
+		mem_ROM[27] = 32'sd608;
+		mem_ROM[28] = -32'sd1542;
+		mem_ROM[29] = 32'sd411;
+		mem_ROM[30] = -32'sd205;
+		mem_ROM[31] = -32'sd1571;
+		mem_ROM[32] = 32'sd1223;
+		mem_ROM[33] = 32'sd652;
+		mem_ROM[34] = -32'sd552;
+		mem_ROM[35] = 32'sd1015;
+		mem_ROM[36] = -32'sd1293;
+		mem_ROM[37] = 32'sd1491;
+		mem_ROM[38] = -32'sd282;
+		mem_ROM[39] = -32'sd1544;
+		mem_ROM[40] = 32'sd516;
+		mem_ROM[41] = -32'sd8;
+		mem_ROM[42] = -32'sd320;
+		mem_ROM[43] = -32'sd666;
+		mem_ROM[44] = -32'sd1618;
+		mem_ROM[45] = -32'sd1162;
+		mem_ROM[46] = 32'sd126;
+		mem_ROM[47] = 32'sd1469;
+		mem_ROM[48] = -32'sd853;
+		mem_ROM[49] = -32'sd90;
+		mem_ROM[50] = -32'sd271;
+		mem_ROM[51] = 32'sd830;
+		mem_ROM[52] = 32'sd107;
+		mem_ROM[53] = -32'sd1421;
+		mem_ROM[54] = -32'sd247;
+		mem_ROM[55] = -32'sd951;
+		mem_ROM[56] = -32'sd398;
+		mem_ROM[57] = 32'sd961;
+		mem_ROM[58] = -32'sd1508;
+		mem_ROM[59] = -32'sd725;
+		mem_ROM[60] = 32'sd448;
+		mem_ROM[61] = -32'sd1065;
+		mem_ROM[62] = 32'sd677;
+		mem_ROM[63] = -32'sd1275;
+		mem_ROM[64] = -32'sd1103;
+		mem_ROM[65] = 32'sd430;
+		mem_ROM[66] = 32'sd555;
+		mem_ROM[67] = 32'sd843;
+		mem_ROM[68] = -32'sd1251;
+		mem_ROM[69] = 32'sd871;
+		mem_ROM[70] = 32'sd1550;
+		mem_ROM[71] = 32'sd105;
+		mem_ROM[72] = 32'sd422;
+		mem_ROM[73] = 32'sd587;
+		mem_ROM[74] = 32'sd177;
+		mem_ROM[75] = -32'sd235;
+		mem_ROM[76] = -32'sd291;
+		mem_ROM[77] = -32'sd460;
+		mem_ROM[78] = 32'sd1574;
+		mem_ROM[79] = 32'sd1653;
+		mem_ROM[80] = -32'sd246;
+		mem_ROM[81] = 32'sd778;
+		mem_ROM[82] = 32'sd1159;
+		mem_ROM[83] = -32'sd147;
+		mem_ROM[84] = -32'sd777;
+		mem_ROM[85] = 32'sd1483;
+		mem_ROM[86] = -32'sd602;
+		mem_ROM[87] = 32'sd1119;
+		mem_ROM[88] = -32'sd1590;
+		mem_ROM[89] = 32'sd644;
+		mem_ROM[90] = -32'sd872;
+		mem_ROM[91] = 32'sd349;
+		mem_ROM[92] = 32'sd418;
+		mem_ROM[93] = 32'sd329;
+		mem_ROM[94] = -32'sd156;
+		mem_ROM[95] = -32'sd75;
+		mem_ROM[96] = 32'sd817;
+		mem_ROM[97] = 32'sd1097;
+		mem_ROM[98] = 32'sd603;
+		mem_ROM[99] = 32'sd610;
+		mem_ROM[100] = 32'sd1322;
+		mem_ROM[101] = -32'sd1285;
+		mem_ROM[102] = -32'sd1465;
+		mem_ROM[103] = 32'sd384;
+		mem_ROM[104] = -32'sd1215;
+		mem_ROM[105] = -32'sd136;
+		mem_ROM[106] = 32'sd1218;
+		mem_ROM[107] = -32'sd1335;
+		mem_ROM[108] = -32'sd874;
+		mem_ROM[109] = 32'sd220;
+		mem_ROM[110] = -32'sd1187;
+		mem_ROM[111] = -32'sd1659;
+		mem_ROM[112] = -32'sd1185;
+		mem_ROM[113] = -32'sd1530;
+		mem_ROM[114] = -32'sd1278;
+		mem_ROM[115] = 32'sd794;
+		mem_ROM[116] = -32'sd1510;
+		mem_ROM[117] = -32'sd854;
+		mem_ROM[118] = -32'sd870;
+		mem_ROM[119] = 32'sd478;
+		mem_ROM[120] = -32'sd108;
+		mem_ROM[121] = -32'sd308;
+		mem_ROM[122] = 32'sd996;
+		mem_ROM[123] = 32'sd991;
+		mem_ROM[124] = 32'sd958;
+		mem_ROM[125] = -32'sd1460;
+		mem_ROM[126] = 32'sd1522;
+		mem_ROM[127] = 32'sd1628;    
+	end
+
+	always @(posedge clk)
+	begin
+		tw1 <= mem_ROM[address1];
+		tw2 <= mem_ROM[address2];
+	end  
+endmodule
