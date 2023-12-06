@@ -345,38 +345,38 @@ soc_system u0 (
 		  
 //Avalon Adapter Data
 // to fpga
-		  .slave_template_0_user_interface_dataout_0  (aclr_fifo1_top),  // slave_template_0_user_interface.dataout_0
-		  .slave_template_0_user_interface_dataout_1  (wr_clk_fifo1_top),  //                                .dataout_1
-		  .slave_template_0_user_interface_dataout_2  (rd_req_fifo1_top),  //                                .dataout_1
-        .slave_template_0_user_interface_dataout_3  (wr_req_fifo1_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_4  (wr_data1_fifo1_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_5  (wr_data2_fifo2_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_6  (sel_mux1_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_7  (sel_mux2_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_8  (mode_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_9  (start_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_10  (we_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_11  (read_clk_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_12  (write_clk_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_13  (aclr_fifo3_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_14  (rd_clk_fifo3_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_15  (rd_req_fifo3_top),  //                                .datain_11
-// from fpga
-		  .slave_template_0_user_interface_datain_0   (wr_full_fifo1_top),   //                                .datain_0
-        .slave_template_0_user_interface_datain_1   (wr_used_fifo1_top) ,  //                                .datain_1
-        .slave_template_0_user_interface_datain_2   (rd_empty_fifo1_top), //                                .datain_4
-        .slave_template_0_user_interface_datain_3   (rd_used_fifo1_top),   //                                .datain_5
-        .slave_template_0_user_interface_datain_4   (wr_full_fifo2_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_5   (wr_used_fifo2_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_6   (rd_empty_fifo2_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_7   (rd_used_fifo2_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_8  (in_done_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_9  (done_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_10  (wr_full_fifo3_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_11  (wr_used_fifo3_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_12   (rd_empty_fifo3_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_13   (rd_used_fifo3_top),   //                                .datain_6
-		  .slave_template_0_user_interface_datain_14   (rd_data_fifo3_top)   //                                .datain_6
+		  .slave_template_0_user_interface_dataout_0    (aclr_fifo1_top),       // slave_template_0_user_interface.dataout_0
+		  .slave_template_0_user_interface_dataout_1    (wr_clk_fifo1_top),     //                                .dataout_1
+		  .slave_template_0_user_interface_dataout_2    (rd_req_fifo1_top),     //                                .dataout_1
+      .slave_template_0_user_interface_dataout_3    (wr_req_fifo1_top),     //                                .datain_11
+      .slave_template_0_user_interface_dataout_4    (wr_data1_fifo1_top),   //                                .datain_11
+      .slave_template_0_user_interface_dataout_5    (wr_data2_fifo2_top),   //                                .datain_11
+      .slave_template_0_user_interface_dataout_6    (sel_mux1_top),         //                                .datain_11
+      .slave_template_0_user_interface_dataout_7    (sel_mux2_top),         //                                .datain_11
+      .slave_template_0_user_interface_dataout_8    (mode_top),             //                                .datain_11
+      .slave_template_0_user_interface_dataout_9    (start_top),            //                                .datain_11
+      .slave_template_0_user_interface_dataout_10   (we_top),               //                                .datain_11
+      .slave_template_0_user_interface_dataout_11   (read_clk_top),         //                                .datain_11
+      .slave_template_0_user_interface_dataout_12   (write_clk_top),        //                                .datain_11
+      .slave_template_0_user_interface_dataout_13   (aclr_fifo3_top),       //                                .datain_11
+      .slave_template_0_user_interface_dataout_14   (rd_clk_fifo3_top),     //                                .datain_11
+      .slave_template_0_user_interface_dataout_15   (rd_req_fifo3_top),     //                                .datain_11
+// from fp    
+		  .slave_template_0_user_interface_datain_0     (wr_full_fifo1_top),    //                                .datain_0
+      .slave_template_0_user_interface_datain_1     (wr_used_fifo1_top),    //                                .datain_1
+      .slave_template_0_user_interface_datain_2     (rd_empty_fifo1_top),   //                                .datain_4
+      .slave_template_0_user_interface_datain_3     (rd_used_fifo1_top),    //                                .datain_5
+      .slave_template_0_user_interface_datain_4     (wr_full_fifo2_top),    //                                .datain_6
+      .slave_template_0_user_interface_datain_5     (wr_used_fifo2_top),    //                                .datain_6
+      .slave_template_0_user_interface_datain_6     (rd_empty_fifo2_top),   //                                .datain_6
+      .slave_template_0_user_interface_datain_7     (rd_used_fifo2_top),    //                                .datain_6
+      .slave_template_0_user_interface_datain_8     (in_done_top),          //                                .datain_6
+      .slave_template_0_user_interface_datain_9     (done_top),             //                                .datain_6
+      .slave_template_0_user_interface_datain_10    (wr_full_fifo3_top),    //                                .datain_6
+      .slave_template_0_user_interface_datain_11    (wr_used_fifo3_top),    //                                .datain_6
+      .slave_template_0_user_interface_datain_12    (rd_empty_fifo3_top),   //                                .datain_6
+      .slave_template_0_user_interface_datain_13    (rd_used_fifo3_top),    //                                .datain_6
+		  .slave_template_0_user_interface_datain_14    (rd_data_fifo3_top)     //                                .datain_6
 
 );
 // DDR3 SDRAM
