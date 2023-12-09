@@ -153,7 +153,21 @@ int main(int argc, char **argv) {
 			FI_FIFO_IN_WR_CLK(0);
 			FI_FIFO_IN_WR_CLK(1);
 		}
-
+		printf("==INPUT STAGE==");
+		printf("FF1_WR_FULL=%x\n",FO_FIFO_IN1_WR_FULL);
+		printf("FF1_WR_USED=%x\n",FO_FIFO_IN1_WR_USED);
+		printf("FF1_RD_EMPTY=%x\n",FO_FIFO_IN1_RD_EMPTY);
+		printf("FF1_RD_USED=%x\n",FO_FIFO_IN1_RD_USED);
+		printf("FF2_WR_FULL=%x\n",FO_FIFO_IN2_WR_FULL);
+		printf("FF2_WR_USED=%x\n",FO_FIFO_IN2_WR_USED);
+		printf("FF2_RD_EMPTY=%x\n",FO_FIFO_IN2_RD_EMPTY);
+		printf("FF2_RD_USED=%x\n",FO_FIFO_IN2_RD_USED);
+		printf("FF3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FF3_WR_USED=%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FF3_RD_DATA=%d\n",FO_FIFO_OUT3_RD_DATA);
+		printf("FF3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FF3_RD_USED=%x\n",FO_FIFO_OUT3_RD_USED);
+		
 		// int function;
 		// bool running=true;
 		// uint32_t DATA_write=1;        
