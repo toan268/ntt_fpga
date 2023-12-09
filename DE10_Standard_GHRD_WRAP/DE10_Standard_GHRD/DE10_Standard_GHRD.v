@@ -361,7 +361,7 @@ soc_system u0 (
       .slave_template_0_user_interface_dataout_13   (aclr_fifo3_top),       //                                .datain_11
       .slave_template_0_user_interface_dataout_14   (rd_clk_fifo3_top),     //                                .datain_11
       .slave_template_0_user_interface_dataout_15   (rd_req_fifo3_top),     //                                .datain_11
-// from fp    
+// from fpga
 		  .slave_template_0_user_interface_datain_0     (wr_full_fifo1_top),    //                                .datain_0
       .slave_template_0_user_interface_datain_1     (wr_used_fifo1_top),    //                                .datain_1
       .slave_template_0_user_interface_datain_2     (rd_empty_fifo1_top),   //                                .datain_4
@@ -421,22 +421,22 @@ parameter           WIDTH = 32; //data length
 	wire   rd_req_fifo3_top;
 	//***********output***************
 	wire   wr_full_fifo1_top;
-	wire   wr_used_fifo1_top;
+	wire   [8:0] wr_used_fifo1_top;
 	wire   rd_empty_fifo1_top;
-	wire   rd_used_fifo1_top;
+	wire   [8:0] rd_used_fifo1_top;
 	
 	wire   wr_full_fifo2_top;
-	wire   wr_used_fifo2_top;
+	wire   [8:0] wr_used_fifo2_top;
 	wire   rd_empty_fifo2_top;
-	wire   rd_used_fifo2_top;
+	wire   [8:0] rd_used_fifo2_top;
 	
 	wire   in_done_top;
 	wire   done_top;
 	
 	wire   wr_full_fifo3_top;
-	wire   wr_used_fifo3_top;
+	wire   [8:0] wr_used_fifo3_top;
 	wire   rd_empty_fifo3_top;
-	wire   rd_used_fifo3_top;
+	wire   [8:0] rd_used_fifo3_top;
 	wire   [31:0] rd_data_fifo3_top;
 interface(
 	//***********input***************

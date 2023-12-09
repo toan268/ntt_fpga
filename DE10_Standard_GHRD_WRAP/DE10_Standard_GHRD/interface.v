@@ -27,22 +27,22 @@ module interface(
 	input wire 			rd_req_fifo3_top,
 	//***********output***************
 	output wire 			wr_full_fifo1_top,
-	output wire 			wr_used_fifo1_top,
+	output wire 			[8:0] wr_used_fifo1_top,
 	output wire				rd_empty_fifo1_top,
-	output wire 			rd_used_fifo1_top,
+	output wire 			[8:0] rd_used_fifo1_top,
 	
 	output wire 			wr_full_fifo2_top,
-	output wire 			wr_used_fifo2_top,
+	output wire 			[8:0] wr_used_fifo2_top,
 	output wire				rd_empty_fifo2_top,
-	output wire 			rd_used_fifo2_top,
+	output wire 			[8:0] rd_used_fifo2_top,
 	
 	output wire 			in_done_top,
 	output wire 			done_top,
 	
 	output wire 			wr_full_fifo3_top,
-	output wire 			wr_used_fifo3_top,
+	output wire 			[8:0] wr_used_fifo3_top,
 	output wire				rd_empty_fifo3_top,
-	output wire 			rd_used_fifo3_top,
+	output wire 			[8:0] rd_used_fifo3_top,
 	output wire [31:0]	rd_data_fifo3_top
 	);
 wire [31:0]	rd_data1,rd_data2;
@@ -103,8 +103,8 @@ wrap top(
     .clk(clk_top),
     .rst(rst_top),
     .start(start_top),
-    .mode(cmode_top), 
-	 .we(we),
+    .mode(mode_top), 
+	 .we(we_top),
 	 .address_ina(address_ina),
 	 .address_inb(address_inb),
  	//***********output***************
