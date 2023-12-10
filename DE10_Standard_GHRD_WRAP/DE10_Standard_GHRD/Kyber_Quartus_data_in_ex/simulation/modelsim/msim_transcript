@@ -1,0 +1,179 @@
+# Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# ERROR: No extended dataflow license exists
+# do wrap_run_msim_gate_verilog.do
+# if {[file exists gate_work]} {
+# 	vdel -lib gate_work -all
+# }
+# vlib gate_work
+# vmap work gate_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work gate_work 
+# Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+. {wrap.vo}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:23:24 on Dec 10,2023
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+." wrap.vo 
+# -- Compiling module wrap
+# 
+# Top level modules:
+# 	wrap
+# End time: 17:23:25 on Dec 10,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+D:/STUDY/Hardware\ implementation\ of\ CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3 {D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:23:25 on Dec 10,2023
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3" D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v 
+# -- Compiling module Wrap_tb
+# 
+# Top level modules:
+# 	Wrap_tb
+# End time: 17:23:25 on Dec 10,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps +transport_int_delays +transport_path_delays -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  Wrap_tb
+# vsim -t 1ps "+transport_int_delays" "+transport_path_delays" -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" Wrap_tb 
+# Start time: 17:23:27 on Dec 10,2023
+# Loading work.Wrap_tb
+# Loading work.wrap
+# Loading cyclonev_ver.cyclonev_io_obuf
+# Loading cyclonev_ver.cyclonev_io_ibuf
+# Loading cyclonev_ver.cyclonev_clkena
+# Loading cyclonev_ver.cyclonev_lcell_comb
+# Loading altera_ver.dffeas
+# Loading cyclonev_ver.cyclonev_ram_block
+# Loading sv_std.std
+# Loading altera_lnsim_ver.generic_m10k
+# Loading altera_lnsim_ver.altera_lnsim_functions
+# Loading altera_lnsim_ver.common_28nm_ram_block
+# Loading altera_lnsim_ver.common_28nm_ram_register
+# Loading altera_lnsim_ver.common_28nm_ram_pulse_generator
+# Loading cyclonev_ver.cyclonev_mac
+# Loading altera_ver.PRIM_GDFF_LOW
+# ** Warning: (vsim-3016) wrap.vo(14353): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(14353): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(14353): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(14353): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(14353): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(14353): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(14353): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(14353): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(14353): [PCDPC] - Port size (17) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(14353): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8 /inst/<protected> File: nofile
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT63|lpm_mult_component|auto_generated|Mult0~8 /inst/<protected> File: nofile
+# ** Warning: (vsim-3015) wrap.vo(18247): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(18247): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(18247): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(18247): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(18247): [PCDPC] - Port size (19) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(18247): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac /inst/<protected> File: nofile
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|iMULT31|lpm_mult_component|auto_generated|Mult0~mac /inst/<protected> File: nofile
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21238): Port type is incompatible with connection (port 'ay').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21238): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21238): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21238): [PCDPC] - Port size (17) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21238): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36 /inst/<protected> File: nofile
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~36 /inst/<protected> File: nofile
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3016) wrap.vo(21385): Port type is incompatible with connection (port 'ax').
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21385): [PCDPC] - Port size (1) does not match connection size (26) for port 'az'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4326).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21385): [PCDPC] - Port size (16) does not match connection size (18) for port 'bx'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4328).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21385): [PCDPC] - Port size (16) does not match connection size (19) for port 'by'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4329).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21385): [PCDPC] - Port size (1) does not match connection size (18) for port 'bz'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4330).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21385): [PCDPC] - Port size (18) does not match connection size (27) for port 'scanin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4332).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) wrap.vo(21385): [PCDPC] - Port size (64) does not match connection size (1) for port 'chainin'. The port definition is at: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(4333).
+#    Time: 0 ps  Iteration: 0  Instance: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377 /inst/<protected> File: nofile
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /Wrap_tb/dut/\ibutterfly1|ibarrett|iMULT62|lpm_mult_component|auto_generated|Mult0~377 /inst/<protected> File: nofile
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Note: $finish    : D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v(787)
+#    Time: 187805 ns  Iteration: 0  Instance: /Wrap_tb
+# 1
+# Break in Module Wrap_tb at D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v line 787
+# End time: 17:31:47 on Dec 10,2023, Elapsed time: 0:08:20
+# Errors: 0, Warnings: 56

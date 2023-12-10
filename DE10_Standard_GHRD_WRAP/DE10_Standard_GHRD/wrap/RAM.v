@@ -76,13 +76,13 @@
 //        assign DB2out = sa4? DB2in : DB2outnor;
     
 //endmodule
-module RAM(clk,DA1in,DA2in,DB1in,DB2in,A1radd,A2radd,B1radd,B2radd,DA1out,DA2out,DB1out,DB2out,we);
+module RAM(clk,DA1in,DB1in,A1radd,B1radd,DA1out,DB1out,we1,we2);
 
     input clk;
-    input [7:0] A1radd,A2radd, B1radd, B2radd; //read address
-    input [15:0] DA1in, DA2in, DB1in, DB2in;// data to RAM
-    output reg [15:0] DA1out, DA2out, DB1out, DB2out;//data from RAM
-    input we;
+    input [7:0] A1radd, B1radd; //read address
+    input [15:0] DA1in, DB1in;// data to RAM
+    output reg [15:0] DA1out, DB1out;//data from RAM
+    input we1,we2;
     
     ////////////////////////////////////////////////////////////////////////////////
 // Local logic and instantiation
@@ -91,20 +91,25 @@ module RAM(clk,DA1in,DA2in,DB1in,DB2in,A1radd,A2radd,B1radd,B2radd,DA1out,DA2out
     
     always@(posedge clk)
     begin
-        if(we)
+        if(we1)
         begin 
             mem[A1radd] <= DA1in;
-            mem[B1radd] <= DB1in;
-            mem[A2radd] <= DA2in;
-            mem[B2radd] <= DB2in;
         end
         else
         begin 
             DA1out <= mem[A1radd];
-            DB1out <= mem[B1radd];
-            DA2out <= mem[A2radd];
-            DB2out <= mem[B2radd];
         end
     end    
+    always@(posedge clk)
+    begin
+        if(we2)
+        begin 
+            mem[B1radd] <= DB1in;
+        end
+        else
+        begin 
+            DB1out <= mem[B1radd];
+        end
+    end   
 endmodule
 

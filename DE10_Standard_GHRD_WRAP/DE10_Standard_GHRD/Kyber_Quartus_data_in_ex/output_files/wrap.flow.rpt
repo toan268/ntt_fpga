@@ -1,6 +1,6 @@
 Flow report for wrap
-Mon Dec  4 09:53:34 2023
-Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Standard Edition
+Sun Dec 10 17:23:16 2023
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -21,9 +21,9 @@ Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Standard Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2022  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and any partner logic 
+and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
@@ -33,34 +33,33 @@ the Intel FPGA IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
 Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+refer to the applicable agreement for further details.
 
 
 
-+--------------------------------------------------------------------------------------+
-; Flow Summary                                                                         ;
-+---------------------------------+----------------------------------------------------+
-; Flow Status                     ; Successful - Mon Dec  4 09:53:26 2023              ;
-; Quartus Prime Version           ; 22.1std.0 Build 915 10/25/2022 SC Standard Edition ;
-; Revision Name                   ; wrap                                               ;
-; Top-level Entity Name           ; wrap                                               ;
-; Family                          ; Cyclone V                                          ;
-; Device                          ; 5CSXFC6D6F31C6                                     ;
-; Timing Models                   ; Final                                              ;
-; Logic utilization (in ALMs)     ; 442 / 41,910 ( 1 % )                               ;
-; Total registers                 ; 234                                                ;
-; Total pins                      ; 88 / 499 ( 18 % )                                  ;
-; Total virtual pins              ; 0                                                  ;
-; Total block memory bits         ; 49,408 / 5,662,720 ( < 1 % )                       ;
-; Total DSP Blocks                ; 4 / 112 ( 4 % )                                    ;
-; Total HSSI RX PCSs              ; 0 / 9 ( 0 % )                                      ;
-; Total HSSI PMA RX Deserializers ; 0 / 9 ( 0 % )                                      ;
-; Total HSSI TX PCSs              ; 0 / 9 ( 0 % )                                      ;
-; Total HSSI PMA TX Serializers   ; 0 / 9 ( 0 % )                                      ;
-; Total PLLs                      ; 0 / 15 ( 0 % )                                     ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                                      ;
-+---------------------------------+----------------------------------------------------+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Sun Dec 10 17:23:16 2023       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; wrap                                        ;
+; Top-level Entity Name           ; wrap                                        ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CSXFC6D6F31C6                              ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 443 / 41,910 ( 1 % )                        ;
+; Total registers                 ; 232                                         ;
+; Total pins                      ; 89 / 499 ( 18 % )                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 49,408 / 5,662,720 ( < 1 % )                ;
+; Total DSP Blocks                ; 4 / 112 ( 4 % )                             ;
+; Total HSSI RX PCSs              ; 0 / 9 ( 0 % )                               ;
+; Total HSSI PMA RX Deserializers ; 0 / 9 ( 0 % )                               ;
+; Total HSSI TX PCSs              ; 0 / 9 ( 0 % )                               ;
+; Total HSSI PMA TX Serializers   ; 0 / 9 ( 0 % )                               ;
+; Total PLLs                      ; 0 / 15 ( 0 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
++---------------------------------+---------------------------------------------+
 
 
 +-----------------------------------------+
@@ -68,47 +67,57 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/04/2023 09:50:03 ;
+; Start date & time ; 12/10/2023 17:20:02 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; wrap                ;
 +-------------------+---------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                      ;
-+---------------------------------------------------+----------------------------------------+---------------+-------------+------------+
-; Assignment Name                                   ; Value                                  ; Default Value ; Entity Name ; Section Id ;
-+---------------------------------------------------+----------------------------------------+---------------+-------------+------------+
-; ADV_NETLIST_OPT_SYNTH_WYSIWYG_REMAP               ; On                                     ; Off           ; --          ; --         ;
-; COMPILER_SIGNATURE_ID                             ; 2485377892354.170165820310798          ; --            ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP                            ; 85                                     ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP                            ; 0                                      ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT3.bsf                              ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT3_inst.v                           ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT3_bb.v                             ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT3.inc                              ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT3.cmp                              ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT6.bsf                              ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT6_inst.v                           ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT6_bb.v                             ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT6.inc                              ; --            ; --          ; --         ;
-; MISC_FILE                                         ; MULT6.cmp                              ; --            ; --          ; --         ;
-; MUX_RESTRUCTURE                                   ; Off                                    ; Auto          ; --          ; --         ;
-; OPTIMIZATION_TECHNIQUE                            ; Speed                                  ; Balanced      ; --          ; --         ;
-; PARTITION_COLOR                                   ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL               ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; PARTITION_NETLIST_TYPE                            ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; PHYSICAL_SYNTHESIS_ASYNCHRONOUS_SIGNAL_PIPELINING ; On                                     ; Off           ; --          ; --         ;
-; PHYSICAL_SYNTHESIS_COMBO_LOGIC                    ; On                                     ; Off           ; --          ; --         ;
-; PHYSICAL_SYNTHESIS_REGISTER_DUPLICATION           ; On                                     ; Off           ; --          ; --         ;
-; PHYSICAL_SYNTHESIS_REGISTER_RETIMING              ; On                                     ; Off           ; --          ; --         ;
-; POWER_BOARD_THERMAL_MODEL                         ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION                     ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY                          ; output_files                           ; --            ; --          ; --         ;
-; QII_AUTO_PACKED_REGISTERS                         ; Normal                                 ; Auto          ; --          ; --         ;
-; ROUTER_LCELL_INSERTION_AND_LOGIC_DUPLICATION      ; On                                     ; Auto          ; --          ; --         ;
-; ROUTER_TIMING_OPTIMIZATION_LEVEL                  ; MAXIMUM                                ; Normal        ; --          ; --         ;
-+---------------------------------------------------+----------------------------------------+---------------+-------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                          ;
++---------------------------------------------------+----------------------------------------+---------------+-------------+----------------+
+; Assignment Name                                   ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
++---------------------------------------------------+----------------------------------------+---------------+-------------+----------------+
+; ADV_NETLIST_OPT_SYNTH_WYSIWYG_REMAP               ; On                                     ; Off           ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                             ; 163519839187817.170220360113804        ; --            ; --          ; --             ;
+; EDA_DESIGN_INSTANCE_NAME                          ; NA                                     ; --            ; --          ; Wrap_tb        ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH              ; Wrap_tb                                ; --            ; --          ; eda_simulation ;
+; EDA_OUTPUT_DATA_FORMAT                            ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
+; EDA_RUN_TOOL_AUTOMATICALLY                        ; On                                     ; --            ; --          ; eda_simulation ;
+; EDA_SIMULATION_TOOL                               ; ModelSim-Altera (Verilog)              ; <None>        ; --          ; --             ;
+; EDA_TEST_BENCH_ENABLE_STATUS                      ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation ;
+; EDA_TEST_BENCH_FILE                               ; Wrap_tb.v                              ; --            ; --          ; Wrap_tb        ;
+; EDA_TEST_BENCH_MODULE_NAME                        ; Wrap_tb                                ; --            ; --          ; Wrap_tb        ;
+; EDA_TEST_BENCH_NAME                               ; Wrap_tb                                ; --            ; --          ; eda_simulation ;
+; EDA_TIME_SCALE                                    ; 1 ps                                   ; --            ; --          ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP                            ; 85                                     ; --            ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP                            ; 0                                      ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT3.bsf                              ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT3_inst.v                           ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT3_bb.v                             ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT3.inc                              ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT3.cmp                              ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT6.bsf                              ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT6_inst.v                           ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT6_bb.v                             ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT6.inc                              ; --            ; --          ; --             ;
+; MISC_FILE                                         ; MULT6.cmp                              ; --            ; --          ; --             ;
+; MUX_RESTRUCTURE                                   ; Off                                    ; Auto          ; --          ; --             ;
+; OPTIMIZATION_TECHNIQUE                            ; Speed                                  ; Balanced      ; --          ; --             ;
+; PARTITION_COLOR                                   ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL               ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; PARTITION_NETLIST_TYPE                            ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; PHYSICAL_SYNTHESIS_ASYNCHRONOUS_SIGNAL_PIPELINING ; On                                     ; Off           ; --          ; --             ;
+; PHYSICAL_SYNTHESIS_COMBO_LOGIC                    ; On                                     ; Off           ; --          ; --             ;
+; PHYSICAL_SYNTHESIS_REGISTER_DUPLICATION           ; On                                     ; Off           ; --          ; --             ;
+; PHYSICAL_SYNTHESIS_REGISTER_RETIMING              ; On                                     ; Off           ; --          ; --             ;
+; POWER_BOARD_THERMAL_MODEL                         ; None (CONSERVATIVE)                    ; --            ; --          ; --             ;
+; POWER_PRESET_COOLING_SOLUTION                     ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --             ;
+; PROJECT_OUTPUT_DIRECTORY                          ; output_files                           ; --            ; --          ; --             ;
+; QII_AUTO_PACKED_REGISTERS                         ; Normal                                 ; Auto          ; --          ; --             ;
+; ROUTER_LCELL_INSERTION_AND_LOGIC_DUPLICATION      ; On                                     ; Auto          ; --          ; --             ;
+; ROUTER_TIMING_OPTIMIZATION_LEVEL                  ; MAXIMUM                                ; Normal        ; --          ; --             ;
++---------------------------------------------------+----------------------------------------+---------------+-------------+----------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -116,24 +125,26 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:16     ; 1.0                     ; 672 MB              ; 00:00:25                           ;
-; Fitter               ; 00:02:56     ; 1.0                     ; 2241 MB             ; 00:05:54                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 702 MB              ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:06     ; 1.9                     ; 1070 MB             ; 00:00:08                           ;
-; Total                ; 00:03:24     ; --                      ; --                  ; 00:06:33                           ;
+; Analysis & Synthesis ; 00:00:32     ; 1.0                     ; 4852 MB             ; 00:00:56                           ;
+; Fitter               ; 00:02:04     ; 1.1                     ; 6621 MB             ; 00:03:40                           ;
+; Assembler            ; 00:00:14     ; 1.0                     ; 4836 MB             ; 00:00:13                           ;
+; Timing Analyzer      ; 00:00:14     ; 1.5                     ; 5173 MB             ; 00:00:18                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4757 MB             ; 00:00:02                           ;
+; Total                ; 00:03:06     ; --                      ; --                  ; 00:05:09                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                          ;
-+----------------------+------------------+------------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name          ; OS Version ; Processor type ;
-+----------------------+------------------+------------------+------------+----------------+
-; Analysis & Synthesis ; haka             ; Debian GNU/Linux ; 10         ; x86_64         ;
-; Fitter               ; haka             ; Debian GNU/Linux ; 10         ; x86_64         ;
-; Assembler            ; haka             ; Debian GNU/Linux ; 10         ; x86_64         ;
-; Timing Analyzer      ; haka             ; Debian GNU/Linux ; 10         ; x86_64         ;
-+----------------------+------------------+------------------+------------+----------------+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-21L0LE9  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-21L0LE9  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-21L0LE9  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-21L0LE9  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; DESKTOP-21L0LE9  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
 
 
 ------------
@@ -143,6 +154,7 @@ quartus_map --read_settings_files=on --write_settings_files=off wrap -c wrap
 quartus_fit --read_settings_files=off --write_settings_files=off wrap -c wrap
 quartus_asm --read_settings_files=off --write_settings_files=off wrap -c wrap
 quartus_sta wrap -c wrap
+quartus_eda --read_settings_files=off --write_settings_files=off wrap -c wrap
 
 
 

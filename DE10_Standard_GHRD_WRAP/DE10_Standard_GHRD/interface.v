@@ -43,7 +43,8 @@ module interface(
 	output wire 			[8:0] wr_used_fifo3_top,
 	output wire				rd_empty_fifo3_top,
 	output wire 			[8:0] rd_used_fifo3_top,
-	output wire [31:0]	rd_data_fifo3_top
+	output wire 			[31:0]	rd_data_fifo3_top,
+	output wire 			init_done
 	);
 wire [31:0]	rd_data1,rd_data2;
 wire read_clk;
@@ -114,7 +115,8 @@ wrap top(
 	 .data_out2(data_out2),
     .in_done(in_done_top),
     .cal_done(cal_done),
-    .done(done_top)
+    .done(done_top),
+	 .init_done(init_done)
 );
 assign rd_data1[23:16] = address_ina;
 assign rd_data1[15:0] = data_ina;

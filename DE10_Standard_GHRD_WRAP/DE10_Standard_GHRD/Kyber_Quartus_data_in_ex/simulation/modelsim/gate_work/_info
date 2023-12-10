@@ -1,0 +1,55 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/simulation/modelsim
+vwrap
+Z1 !s110 1702203805
+!i10b 1
+!s100 0WSG?eHdRgbA@YDjm0>E12
+If]W]:9f@8Ded230UO165Q3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1702203796
+8wrap.vo
+Fwrap.vo
+L0 31
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1702203804.000000
+!s107 wrap.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|wrap.vo|
+!i113 1
+Z4 o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+.
+Z5 tCvgOpt 0
+vWrap_tb
+R1
+!i10b 1
+!s100 HICS7>I[4VTGYG2Kjh8FN2
+I7bzo2QCD?TNhWP0>2[fg:3
+R2
+R0
+w1702203600
+8D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v
+FD:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v
+L0 43
+R3
+r1
+!s85 0
+31
+!s108 1702203805.000000
+!s107 D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3|D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v|
+!i113 1
+R4
+!s92 -vlog01compat -work work {+incdir+D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3}
+R5
+n@wrap_tb

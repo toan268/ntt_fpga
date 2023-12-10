@@ -24,8 +24,6 @@ module wrap(clk,rst,start,mode,data_out1,data_out2,in_done,cal_done,done);
     input rst;
     input start;
     input mode; //0: NTT, 1: INTT
-    input we;
-    input [15:0] data_ina, data_inb;
     output [15:0] data_out1,data_out2;
     output in_done;
     output cal_done;
@@ -115,13 +113,10 @@ module wrap(clk,rst,start,mode,data_out1,data_out2,in_done,cal_done,done);
     assign TFadd1_w = (mode_w[1] == 1'b1) ? c_inout1 : cc1;
     //assign TFadd2_w = (mode_w[1] == 1'b1) ? c_inout2 : cc2;
 
-	RAMIN1 iRAMIN11 (
+	ROMIN1 iROMIN11 (
 		.clk(clk),
 		.address1(Radda1_w),
 		.address2(Raddb1_w),
-        .ain(data_ina),
-        .bin(data_inb),
-        .we(we),
 		.a(data_in1),
 		.b(data_in2)
 		);

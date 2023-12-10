@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data_out1,data_out2,in_done,cal_done,done);
+module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data_out1,data_out2,init_done,in_done,cal_done,done);
     input clk;
     input rst;
     input start;
@@ -28,6 +28,7 @@ module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data
     input [7:0] address_ina,address_inb;
     input [15:0] data_ina, data_inb;
     output [15:0] data_out1,data_out2;
+    output init_done;
     output in_done;
     output cal_done;
     output done;
@@ -115,24 +116,34 @@ module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data
     //assign Raddb2_w = (mode_w[1] == 1'b1) ? b_inout2 : bb2;
     assign TFadd1_w = (mode_w[1] == 1'b1) ? c_inout1 : cc1;
     //assign TFadd2_w = (mode_w[1] == 1'b1) ? c_inout2 : cc2;
-
+    
     wire [7:0] addressA1;
     wire [7:0] addressB1;
+    assign init_done = (address_inb == 255) ? 1 : 0; 
+    assign addressA1 = start ? address_ina  : Radda1_w;
+    assign addressB1 = start ? address_inb  : Raddb1_w;
 
-    assign addressA1 = we? address_ina : Radda1_w;
-    assign addressB1 = we? address_inb : Raddb1_w;
-
-	RAMIN1 iRAMIN11 (
-		.clk(clk),
-		.A1radd(addressA1),
-		.B1radd(addressB1),
-        .DA1in(data_ina),
-        .DB1in(data_inb),
-        .we1(we),
-        .we2(we),
-		.DA1out(data_in1),
-		.DB1out(data_in2)
-		);
+    
+//	ROMIN1 iROMIN11 (
+//		.clk(clk),
+//		.address1(Radda1_w),
+//		.address2(Raddb1_w),
+//		.a(data_in1),
+//		.b(data_in2)
+//		);
+		
+	RAM iRAM2 (
+			.clk(clk),
+			.DA1in(data_ina),
+			.DB1in(data_inb),
+			.A1radd(addressA1),
+			.B1radd(addressB1),
+			.DA1out(data_in1),
+			.DB1out(data_in2),
+			.we1(we),
+			.we2(we)
+			);	
+			
 	
 //	ROMIN1 iROMIN12 (
 //		.clk(clk),

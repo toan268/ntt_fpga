@@ -43,25 +43,38 @@
 module Wrap_tb; 
 
   
-
+    
     reg clk = 0; 
-
+    
     reg rst = 0; 
-	 
-	 reg start = 1;
-	 
-	 reg mode = 0; 
-
+    
+    reg start = 1;
+    
+    reg mode = 0; 
+    
+    reg we = 0;
+    
+    reg [7:0] address_ina;
+    
+    reg [7:0] address_inb;
+    
+    reg [15:0] data_ina;
+    
+    reg [15:0] data_inb;
+    
     wire [15:0] data_out1;
+    
+    wire [15:0] data_out2;
+    
+    wire init_done;
+    
+    wire in_done;
+    
+    wire cal_done;
+    
+    wire done;
+    
 	 
-	 wire [15:0] data_out2;
-	 
-	 
-	 wire in_done;
-	 
-	 wire cal_done;
-	 
-	 wire done;
 	 
 	 
 
@@ -73,8 +86,14 @@ module Wrap_tb;
 		.rst(rst),
 		.start(start),
 		.mode(mode),
+		.we(we),
+		.address_ina(address_ina),
+		.address_inb(address_inb),
+		.data_ina(data_ina),
+		.data_inb(data_inb),
 		.data_out1(data_out1),
 		.data_out2(data_out2),
+		.init_done(init_done),
 		.in_done(in_done),
 		.cal_done(cal_done),
 		.done(done)
@@ -103,666 +122,667 @@ module Wrap_tb;
         #1000  
 
         rst = 0; 
+        
+        #1000  
+        we = 1;
+address_ina = 0;
+address_inb = 1;
+data_ina = 0;
+data_inb = 1;
+#10
+address_ina = 2;
+address_inb = 3;
+data_ina = 2;
+data_inb = 3;
+#10
+address_ina = 4;
+address_inb = 5;
+data_ina = 4;
+data_inb = 5;
+#10
+address_ina = 6;
+address_inb = 7;
+data_ina = 6;
+data_inb = 7;
+#10
+address_ina = 8;
+address_inb = 9;
+data_ina = 8;
+data_inb = 9;
+#10
+address_ina = 10;
+address_inb = 11;
+data_ina = 10;
+data_inb = 11;
+#10
+address_ina = 12;
+address_inb = 13;
+data_ina = 12;
+data_inb = 13;
+#10
+address_ina = 14;
+address_inb = 15;
+data_ina = 14;
+data_inb = 15;
+#10
+address_ina = 16;
+address_inb = 17;
+data_ina = 16;
+data_inb = 17;
+#10
+address_ina = 18;
+address_inb = 19;
+data_ina = 18;
+data_inb = 19;
+#10
+address_ina = 20;
+address_inb = 21;
+data_ina = 20;
+data_inb = 21;
+#10
+address_ina = 22;
+address_inb = 23;
+data_ina = 22;
+data_inb = 23;
+#10
+address_ina = 24;
+address_inb = 25;
+data_ina = 24;
+data_inb = 25;
+#10
+address_ina = 26;
+address_inb = 27;
+data_ina = 26;
+data_inb = 27;
+#10
+address_ina = 28;
+address_inb = 29;
+data_ina = 28;
+data_inb = 29;
+#10
+address_ina = 30;
+address_inb = 31;
+data_ina = 30;
+data_inb = 31;
+#10
+address_ina = 32;
+address_inb = 33;
+data_ina = 32;
+data_inb = 33;
+#10
+address_ina = 34;
+address_inb = 35;
+data_ina = 34;
+data_inb = 35;
+#10
+address_ina = 36;
+address_inb = 37;
+data_ina = 36;
+data_inb = 37;
+#10
+address_ina = 38;
+address_inb = 39;
+data_ina = 38;
+data_inb = 39;
+#10
+address_ina = 40;
+address_inb = 41;
+data_ina = 40;
+data_inb = 41;
+#10
+address_ina = 42;
+address_inb = 43;
+data_ina = 42;
+data_inb = 43;
+#10
+address_ina = 44;
+address_inb = 45;
+data_ina = 44;
+data_inb = 45;
+#10
+address_ina = 46;
+address_inb = 47;
+data_ina = 46;
+data_inb = 47;
+#10
+address_ina = 48;
+address_inb = 49;
+data_ina = 48;
+data_inb = 49;
+#10
+address_ina = 50;
+address_inb = 51;
+data_ina = 50;
+data_inb = 51;
+#10
+address_ina = 52;
+address_inb = 53;
+data_ina = 52;
+data_inb = 53;
+#10
+address_ina = 54;
+address_inb = 55;
+data_ina = 54;
+data_inb = 55;
+#10
+address_ina = 56;
+address_inb = 57;
+data_ina = 56;
+data_inb = 57;
+#10
+address_ina = 58;
+address_inb = 59;
+data_ina = 58;
+data_inb = 59;
+#10
+address_ina = 60;
+address_inb = 61;
+data_ina = 60;
+data_inb = 61;
+#10
+address_ina = 62;
+address_inb = 63;
+data_ina = 62;
+data_inb = 63;
+#10
+address_ina = 64;
+address_inb = 65;
+data_ina = 64;
+data_inb = 65;
+#10
+address_ina = 66;
+address_inb = 67;
+data_ina = 66;
+data_inb = 67;
+#10
+address_ina = 68;
+address_inb = 69;
+data_ina = 68;
+data_inb = 69;
+#10
+address_ina = 70;
+address_inb = 71;
+data_ina = 70;
+data_inb = 71;
+#10
+address_ina = 72;
+address_inb = 73;
+data_ina = 72;
+data_inb = 73;
+#10
+address_ina = 74;
+address_inb = 75;
+data_ina = 74;
+data_inb = 75;
+#10
+address_ina = 76;
+address_inb = 77;
+data_ina = 76;
+data_inb = 77;
+#10
+address_ina = 78;
+address_inb = 79;
+data_ina = 78;
+data_inb = 79;
+#10
+address_ina = 80;
+address_inb = 81;
+data_ina = 80;
+data_inb = 81;
+#10
+address_ina = 82;
+address_inb = 83;
+data_ina = 82;
+data_inb = 83;
+#10
+address_ina = 84;
+address_inb = 85;
+data_ina = 84;
+data_inb = 85;
+#10
+address_ina = 86;
+address_inb = 87;
+data_ina = 86;
+data_inb = 87;
+#10
+address_ina = 88;
+address_inb = 89;
+data_ina = 88;
+data_inb = 89;
+#10
+address_ina = 90;
+address_inb = 91;
+data_ina = 90;
+data_inb = 91;
+#10
+address_ina = 92;
+address_inb = 93;
+data_ina = 92;
+data_inb = 93;
+#10
+address_ina = 94;
+address_inb = 95;
+data_ina = 94;
+data_inb = 95;
+#10
+address_ina = 96;
+address_inb = 97;
+data_ina = 96;
+data_inb = 97;
+#10
+address_ina = 98;
+address_inb = 99;
+data_ina = 98;
+data_inb = 99;
+#10
+address_ina = 100;
+address_inb = 101;
+data_ina = 100;
+data_inb = 101;
+#10
+address_ina = 102;
+address_inb = 103;
+data_ina = 102;
+data_inb = 103;
+#10
+address_ina = 104;
+address_inb = 105;
+data_ina = 104;
+data_inb = 105;
+#10
+address_ina = 106;
+address_inb = 107;
+data_ina = 106;
+data_inb = 107;
+#10
+address_ina = 108;
+address_inb = 109;
+data_ina = 108;
+data_inb = 109;
+#10
+address_ina = 110;
+address_inb = 111;
+data_ina = 110;
+data_inb = 111;
+#10
+address_ina = 112;
+address_inb = 113;
+data_ina = 112;
+data_inb = 113;
+#10
+address_ina = 114;
+address_inb = 115;
+data_ina = 114;
+data_inb = 115;
+#10
+address_ina = 116;
+address_inb = 117;
+data_ina = 116;
+data_inb = 117;
+#10
+address_ina = 118;
+address_inb = 119;
+data_ina = 118;
+data_inb = 119;
+#10
+address_ina = 120;
+address_inb = 121;
+data_ina = 120;
+data_inb = 121;
+#10
+address_ina = 122;
+address_inb = 123;
+data_ina = 122;
+data_inb = 123;
+#10
+address_ina = 124;
+address_inb = 125;
+data_ina = 124;
+data_inb = 125;
+#10
+address_ina = 126;
+address_inb = 127;
+data_ina = 126;
+data_inb = 127;
+#10
+address_ina = 128;
+address_inb = 129;
+data_ina = 128;
+data_inb = 129;
+#10
+address_ina = 130;
+address_inb = 131;
+data_ina = 130;
+data_inb = 131;
+#10
+address_ina = 132;
+address_inb = 133;
+data_ina = 132;
+data_inb = 133;
+#10
+address_ina = 134;
+address_inb = 135;
+data_ina = 134;
+data_inb = 135;
+#10
+address_ina = 136;
+address_inb = 137;
+data_ina = 136;
+data_inb = 137;
+#10
+address_ina = 138;
+address_inb = 139;
+data_ina = 138;
+data_inb = 139;
+#10
+address_ina = 140;
+address_inb = 141;
+data_ina = 140;
+data_inb = 141;
+#10
+address_ina = 142;
+address_inb = 143;
+data_ina = 142;
+data_inb = 143;
+#10
+address_ina = 144;
+address_inb = 145;
+data_ina = 144;
+data_inb = 145;
+#10
+address_ina = 146;
+address_inb = 147;
+data_ina = 146;
+data_inb = 147;
+#10
+address_ina = 148;
+address_inb = 149;
+data_ina = 148;
+data_inb = 149;
+#10
+address_ina = 150;
+address_inb = 151;
+data_ina = 150;
+data_inb = 151;
+#10
+address_ina = 152;
+address_inb = 153;
+data_ina = 152;
+data_inb = 153;
+#10
+address_ina = 154;
+address_inb = 155;
+data_ina = 154;
+data_inb = 155;
+#10
+address_ina = 156;
+address_inb = 157;
+data_ina = 156;
+data_inb = 157;
+#10
+address_ina = 158;
+address_inb = 159;
+data_ina = 158;
+data_inb = 159;
+#10
+address_ina = 160;
+address_inb = 161;
+data_ina = 160;
+data_inb = 161;
+#10
+address_ina = 162;
+address_inb = 163;
+data_ina = 162;
+data_inb = 163;
+#10
+address_ina = 164;
+address_inb = 165;
+data_ina = 164;
+data_inb = 165;
+#10
+address_ina = 166;
+address_inb = 167;
+data_ina = 166;
+data_inb = 167;
+#10
+address_ina = 168;
+address_inb = 169;
+data_ina = 168;
+data_inb = 169;
+#10
+address_ina = 170;
+address_inb = 171;
+data_ina = 170;
+data_inb = 171;
+#10
+address_ina = 172;
+address_inb = 173;
+data_ina = 172;
+data_inb = 173;
+#10
+address_ina = 174;
+address_inb = 175;
+data_ina = 174;
+data_inb = 175;
+#10
+address_ina = 176;
+address_inb = 177;
+data_ina = 176;
+data_inb = 177;
+#10
+address_ina = 178;
+address_inb = 179;
+data_ina = 178;
+data_inb = 179;
+#10
+address_ina = 180;
+address_inb = 181;
+data_ina = 180;
+data_inb = 181;
+#10
+address_ina = 182;
+address_inb = 183;
+data_ina = 182;
+data_inb = 183;
+#10
+address_ina = 184;
+address_inb = 185;
+data_ina = 184;
+data_inb = 185;
+#10
+address_ina = 186;
+address_inb = 187;
+data_ina = 186;
+data_inb = 187;
+#10
+address_ina = 188;
+address_inb = 189;
+data_ina = 188;
+data_inb = 189;
+#10
+address_ina = 190;
+address_inb = 191;
+data_ina = 190;
+data_inb = 191;
+#10
+address_ina = 192;
+address_inb = 193;
+data_ina = 192;
+data_inb = 193;
+#10
+address_ina = 194;
+address_inb = 195;
+data_ina = 194;
+data_inb = 195;
+#10
+address_ina = 196;
+address_inb = 197;
+data_ina = 196;
+data_inb = 197;
+#10
+address_ina = 198;
+address_inb = 199;
+data_ina = 198;
+data_inb = 199;
+#10
+address_ina = 200;
+address_inb = 201;
+data_ina = 200;
+data_inb = 201;
+#10
+address_ina = 202;
+address_inb = 203;
+data_ina = 202;
+data_inb = 203;
+#10
+address_ina = 204;
+address_inb = 205;
+data_ina = 204;
+data_inb = 205;
+#10
+address_ina = 206;
+address_inb = 207;
+data_ina = 206;
+data_inb = 207;
+#10
+address_ina = 208;
+address_inb = 209;
+data_ina = 208;
+data_inb = 209;
+#10
+address_ina = 210;
+address_inb = 211;
+data_ina = 210;
+data_inb = 211;
+#10
+address_ina = 212;
+address_inb = 213;
+data_ina = 212;
+data_inb = 213;
+#10
+address_ina = 214;
+address_inb = 215;
+data_ina = 214;
+data_inb = 215;
+#10
+address_ina = 216;
+address_inb = 217;
+data_ina = 216;
+data_inb = 217;
+#10
+address_ina = 218;
+address_inb = 219;
+data_ina = 218;
+data_inb = 219;
+#10
+address_ina = 220;
+address_inb = 221;
+data_ina = 220;
+data_inb = 221;
+#10
+address_ina = 222;
+address_inb = 223;
+data_ina = 222;
+data_inb = 223;
+#10
+address_ina = 224;
+address_inb = 225;
+data_ina = 224;
+data_inb = 225;
+#10
+address_ina = 226;
+address_inb = 227;
+data_ina = 226;
+data_inb = 227;
+#10
+address_ina = 228;
+address_inb = 229;
+data_ina = 228;
+data_inb = 229;
+#10
+address_ina = 230;
+address_inb = 231;
+data_ina = 230;
+data_inb = 231;
+#10
+address_ina = 232;
+address_inb = 233;
+data_ina = 232;
+data_inb = 233;
+#10
+address_ina = 234;
+address_inb = 235;
+data_ina = 234;
+data_inb = 235;
+#10
+address_ina = 236;
+address_inb = 237;
+data_ina = 236;
+data_inb = 237;
+#10
+address_ina = 238;
+address_inb = 239;
+data_ina = 238;
+data_inb = 239;
+#10
+address_ina = 240;
+address_inb = 241;
+data_ina = 240;
+data_inb = 241;
+#10
+address_ina = 242;
+address_inb = 243;
+data_ina = 242;
+data_inb = 243;
+#10
+address_ina = 244;
+address_inb = 245;
+data_ina = 244;
+data_inb = 245;
+#10
+address_ina = 246;
+address_inb = 247;
+data_ina = 246;
+data_inb = 247;
+#10
+address_ina = 248;
+address_inb = 249;
+data_ina = 248;
+data_inb = 249;
+#10
+address_ina = 250;
+address_inb = 251;
+data_ina = 250;
+data_inb = 251;
+#10
+address_ina = 252;
+address_inb = 253;
+data_ina = 252;
+data_inb = 253;
+#10
+address_ina = 254;
+address_inb = 255;
+data_ina = 254;
+data_inb = 255;
+#10
+        wait(init_done);
+        #30
+        we = 0;
 
+        
         // Start processing 
          
 		  #38000  
 
         start = 0; 
-
+        
+        
 		  wait(done);
 
         #70 
 		  start = 1;
 		 #80 
 
-//        mem[0] = datao1; 
-//
-//        mem[1] = datao2; 
-//
-//        mem[2] = datao3; 
-//
-//        mem[3] = datao4; 
-//
-//        #40 
-//
-//        mem[4] = datao1; 
-//
-//        mem[5] = datao2; 
-//
-//        mem[6] = datao3; 
-//
-//        mem[7] = datao4; 
-//
-//        #40 
-//
-//        mem[8] = datao1; 
-//
-//        mem[9] = datao2; 
-//
-//        mem[10] = datao3; 
-//
-//        mem[11] = datao4; 
-//
-//        #40 
-//
-//        mem[12] = datao1; 
-//
-//        mem[13] = datao2; 
-//
-//        mem[14] = datao3; 
-//
-//        mem[15] = datao4; 
-//
-//        #40 
-//
-//        mem[16] = datao1; 
-//
-//        mem[17] = datao2; 
-//
-//        mem[18] = datao3; 
-//
-//        mem[19] = datao4; 
-//
-//        #40 
-//
-//        mem[20] = datao1; 
-//
-//        mem[21] = datao2; 
-//
-//        mem[22] = datao3; 
-//
-//        mem[23] = datao4; 
-//
-//        #40 
-//
-//        mem[24] = datao1; 
-//
-//        mem[25] = datao2; 
-//
-//        mem[26] = datao3; 
-//
-//        mem[27] = datao4; 
-//
-//        #40 
-//
-//        mem[28] = datao1; 
-//
-//        mem[29] = datao2; 
-//
-//        mem[30] = datao3; 
-//
-//        mem[31] = datao4; 
-//
-//        #40 
-//
-//        mem[32] = datao1; 
-//
-//        mem[33] = datao2; 
-//
-//        mem[34] = datao3; 
-//
-//        mem[35] = datao4; 
-//
-//        #40 
-//
-//        mem[36] = datao1; 
-//
-//        mem[37] = datao2; 
-//
-//        mem[38] = datao3; 
-//
-//        mem[39] = datao4; 
-//
-//        #40 
-//
-//        mem[40] = datao1; 
-//
-//        mem[41] = datao2; 
-//
-//        mem[42] = datao3; 
-//
-//        mem[43] = datao4; 
-//
-//        #40 
-//
-//        mem[44] = datao1; 
-//
-//        mem[45] = datao2; 
-//
-//        mem[46] = datao3; 
-//
-//        mem[47] = datao4; 
-//
-//        #40 
-//
-//        mem[48] = datao1; 
-//
-//        mem[49] = datao2; 
-//
-//        mem[50] = datao3; 
-//
-//        mem[51] = datao4; 
-//
-//        #40 
-//
-//        mem[52] = datao1; 
-//
-//        mem[53] = datao2; 
-//
-//        mem[54] = datao3; 
-//
-//        mem[55] = datao4; 
-//
-//        #40 
-//
-//        mem[56] = datao1; 
-//
-//        mem[57] = datao2; 
-//
-//        mem[58] = datao3; 
-//
-//        mem[59] = datao4; 
-//
-//        #40 
-//
-//        mem[60] = datao1; 
-//
-//        mem[61] = datao2; 
-//
-//        mem[62] = datao3; 
-//
-//        mem[63] = datao4; 
-//
-//        #40 
-//
-//        mem[64] = datao1; 
-//
-//        mem[65] = datao2; 
-//
-//        mem[66] = datao3; 
-//
-//        mem[67] = datao4; 
-//
-//        #40 
-//
-//        mem[68] = datao1; 
-//
-//        mem[69] = datao2; 
-//
-//        mem[70] = datao3; 
-//
-//        mem[71] = datao4; 
-//
-//        #40 
-//
-//        mem[72] = datao1; 
-//
-//        mem[73] = datao2; 
-//
-//        mem[74] = datao3; 
-//
-//        mem[75] = datao4; 
-//
-//        #40 
-//
-//        mem[76] = datao1; 
-//
-//        mem[77] = datao2; 
-//
-//        mem[78] = datao3; 
-//
-//        mem[79] = datao4; 
-//
-//        #40 
-//
-//        mem[80] = datao1; 
-//
-//        mem[81] = datao2; 
-//
-//        mem[82] = datao3; 
-//
-//        mem[83] = datao4; 
-//
-//        #40 
-//
-//        mem[84] = datao1; 
-//
-//        mem[85] = datao2; 
-//
-//        mem[86] = datao3; 
-//
-//        mem[87] = datao4; 
-//
-//        #40 
-//
-//        mem[88] = datao1; 
-//
-//        mem[89] = datao2; 
-//
-//        mem[90] = datao3; 
-//
-//        mem[91] = datao4; 
-//
-//        #40 
-//
-//        mem[92] = datao1; 
-//
-//        mem[93] = datao2; 
-//
-//        mem[94] = datao3; 
-//
-//        mem[95] = datao4; 
-//
-//        #40 
-//
-//        mem[96] = datao1; 
-//
-//        mem[97] = datao2; 
-//
-//        mem[98] = datao3; 
-//
-//        mem[99] = datao4; 
-//
-//        #40 
-//
-//        mem[100] = datao1; 
-//
-//        mem[101] = datao2; 
-//
-//        mem[102] = datao3; 
-//
-//        mem[103] = datao4; 
-//
-//        #40 
-//
-//        mem[104] = datao1; 
-//
-//        mem[105] = datao2; 
-//
-//        mem[106] = datao3; 
-//
-//        mem[107] = datao4; 
-//
-//        #40 
-//
-//        mem[108] = datao1; 
-//
-//        mem[109] = datao2; 
-//
-//        mem[110] = datao3; 
-//
-//        mem[111] = datao4; 
-//
-//        #40 
-//
-//        mem[112] = datao1; 
-//
-//        mem[113] = datao2; 
-//
-//        mem[114] = datao3; 
-//
-//        mem[115] = datao4; 
-//
-//        #40 
-//
-//        mem[116] = datao1; 
-//
-//        mem[117] = datao2; 
-//
-//        mem[118] = datao3; 
-//
-//        mem[119] = datao4; 
-//
-//        #40 
-//
-//        mem[120] = datao1; 
-//
-//        mem[121] = datao2; 
-//
-//        mem[122] = datao3; 
-//
-//        mem[123] = datao4; 
-//
-//        #40 
-//
-//        mem[124] = datao1; 
-//
-//        mem[125] = datao2; 
-//
-//        mem[126] = datao3; 
-//
-//        mem[127] = datao4; 
-//
-//        #40 
-//
-//        mem[128] = datao1; 
-//
-//        mem[129] = datao2; 
-//
-//        mem[130] = datao3; 
-//
-//        mem[131] = datao4; 
-//
-//        #40 
-//
-//        mem[132] = datao1; 
-//
-//        mem[133] = datao2; 
-//
-//        mem[134] = datao3; 
-//
-//        mem[135] = datao4; 
-//
-//        #40 
-//
-//        mem[136] = datao1; 
-//
-//        mem[137] = datao2; 
-//
-//        mem[138] = datao3; 
-//
-//        mem[139] = datao4; 
-//
-//        #40 
-//
-//        mem[140] = datao1; 
-//
-//        mem[141] = datao2; 
-//
-//        mem[142] = datao3; 
-//
-//        mem[143] = datao4; 
-//
-//        #40 
-//
-//        mem[144] = datao1; 
-//
-//        mem[145] = datao2; 
-//
-//        mem[146] = datao3; 
-//
-//        mem[147] = datao4; 
-//
-//        #40 
-//
-//        mem[148] = datao1; 
-//
-//        mem[149] = datao2; 
-//
-//        mem[150] = datao3; 
-//
-//        mem[151] = datao4; 
-//
-//        #40 
-//
-//        mem[152] = datao1; 
-//
-//        mem[153] = datao2; 
-//
-//        mem[154] = datao3; 
-//
-//        mem[155] = datao4; 
-//
-//        #40 
-//
-//        mem[156] = datao1; 
-//
-//        mem[157] = datao2; 
-//
-//        mem[158] = datao3; 
-//
-//        mem[159] = datao4; 
-//
-//        #40 
-//
-//        mem[160] = datao1; 
-//
-//        mem[161] = datao2; 
-//
-//        mem[162] = datao3; 
-//
-//        mem[163] = datao4; 
-//
-//        #40 
-//
-//        mem[164] = datao1; 
-//
-//        mem[165] = datao2; 
-//
-//        mem[166] = datao3; 
-//
-//        mem[167] = datao4; 
-//
-//        #40 
-//
-//        mem[168] = datao1; 
-//
-//        mem[169] = datao2; 
-//
-//        mem[170] = datao3; 
-//
-//        mem[171] = datao4; 
-//
-//        #40 
-//
-//        mem[172] = datao1; 
-//
-//        mem[173] = datao2; 
-//
-//        mem[174] = datao3; 
-//
-//        mem[175] = datao4; 
-//
-//        #40 
-//
-//        mem[176] = datao1; 
-//
-//        mem[177] = datao2; 
-//
-//        mem[178] = datao3; 
-//
-//        mem[179] = datao4; 
-//
-//        #40 
-//
-//        mem[180] = datao1; 
-//
-//        mem[181] = datao2; 
-//
-//        mem[182] = datao3; 
-//
-//        mem[183] = datao4; 
-//
-//        #40 
-//
-//        mem[184] = datao1; 
-//
-//        mem[185] = datao2; 
-//
-//        mem[186] = datao3; 
-//
-//        mem[187] = datao4; 
-//
-//        #40 
-//
-//        mem[188] = datao1; 
-//
-//        mem[189] = datao2; 
-//
-//        mem[190] = datao3; 
-//
-//        mem[191] = datao4; 
-//
-//        #40 
-//
-//        mem[192] = datao1; 
-//
-//        mem[193] = datao2; 
-//
-//        mem[194] = datao3; 
-//
-//        mem[195] = datao4; 
-//
-//        #40 
-//
-//        mem[196] = datao1; 
-//
-//        mem[197] = datao2; 
-//
-//        mem[198] = datao3; 
-//
-//        mem[199] = datao4; 
-//
-//        #40 
-//
-//        mem[200] = datao1; 
-//
-//        mem[201] = datao2; 
-//
-//        mem[202] = datao3; 
-//
-//        mem[203] = datao4; 
-//
-//        #40 
-//
-//        mem[204] = datao1; 
-//
-//        mem[205] = datao2; 
-//
-//        mem[206] = datao3; 
-//
-//        mem[207] = datao4; 
-//
-//        #40 
-//
-//        mem[208] = datao1; 
-//
-//        mem[209] = datao2; 
-//
-//        mem[210] = datao3; 
-//
-//        mem[211] = datao4; 
-//
-//        #40 
-//
-//        mem[212] = datao1; 
-//
-//        mem[213] = datao2; 
-//
-//        mem[214] = datao3; 
-//
-//        mem[215] = datao4; 
-//
-//        #40 
-//
-//        mem[216] = datao1; 
-//
-//        mem[217] = datao2; 
-//
-//        mem[218] = datao3; 
-//
-//        mem[219] = datao4; 
-//
-//        #40 
-//
-//        mem[220] = datao1; 
-//
-//        mem[221] = datao2; 
-//
-//        mem[222] = datao3; 
-//
-//        mem[223] = datao4; 
-//
-//        #40 
-//
-//        mem[224] = datao1; 
-//
-//        mem[225] = datao2; 
-//
-//        mem[226] = datao3; 
-//
-//        mem[227] = datao4; 
-//
-//        #40 
-//
-//        mem[228] = datao1; 
-//
-//        mem[229] = datao2; 
-//
-//        mem[230] = datao3; 
-//
-//        mem[231] = datao4; 
-//
-//        #40 
-//
-//        mem[232] = datao1; 
-//
-//        mem[233] = datao2; 
-//
-//        mem[234] = datao3; 
-//
-//        mem[235] = datao4; 
-//
-//        #40 
-//
-//        mem[236] = datao1; 
-//
-//        mem[237] = datao2; 
-//
-//        mem[238] = datao3; 
-//
-//        mem[239] = datao4; 
-//
-//        #40 
-//
-//        mem[240] = datao1; 
-//
-//        mem[241] = datao2; 
-//
-//        mem[242] = datao3; 
-//
-//        mem[243] = datao4; 
-//
-//        #40 
-//
-//        mem[244] = datao1; 
-//
-//        mem[245] = datao2; 
-//
-//        mem[246] = datao3; 
-//
-//        mem[247] = datao4; 
-//
-//        #40 
-//
-//        mem[248] = datao1; 
-//
-//        mem[249] = datao2; 
-//
-//        mem[250] = datao3; 
-//
-//        mem[251] = datao4; 
-//
-//        #40 
-//
-//        mem[252] = datao1; 
-//
-//        mem[253] = datao2; 
-//
-//        mem[254] = datao3; 
-//
-//        mem[255] = datao4; 
-//
-//        #40 
-//
-//        $writememh("/home/doe/Downloads/outNTTv2.txt",mem); 
-//
-//		  wait(outnnt_done); 
-//
-//		  #40 
-
-        // Simulation done 
 
         $finish; 
     end 

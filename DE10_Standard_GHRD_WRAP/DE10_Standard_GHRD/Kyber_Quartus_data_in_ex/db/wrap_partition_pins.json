@@ -132,6 +132,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "init_done",
+					"strict" : false
+				},
+				{
 					"name" : "in_done",
 					"strict" : false
 				},
@@ -141,6 +145,38 @@
 				},
 				{
 					"name" : "done",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[4]",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[5]",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[6]",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[7]",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[0]",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[1]",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[2]",
+					"strict" : false
+				},
+				{
+					"name" : "address_inb[3]",
 					"strict" : false
 				},
 				{
@@ -201,38 +237,6 @@
 				},
 				{
 					"name" : "data_inb[0]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[0]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[1]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[2]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[3]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[4]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[5]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[6]",
-					"strict" : false
-				},
-				{
-					"name" : "address_inb[7]",
 					"strict" : false
 				},
 				{

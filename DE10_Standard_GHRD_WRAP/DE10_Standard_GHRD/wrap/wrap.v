@@ -19,113 +19,180 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module wrap(clk,rst,start,mode,data_out1,data_out2,data_out3,data_out4,in_done,cal_done,done);
+module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data_out1,data_out2,init_done,in_done,cal_done,done);
     input clk;
     input rst;
     input start;
     input mode; //0: NTT, 1: INTT
-    output [15:0] data_out1,data_out2,data_out3,data_out4;
+    input we;
+    input [7:0] address_ina,address_inb;
+    input [15:0] data_ina, data_inb;
+    output [15:0] data_out1,data_out2;
+    output init_done;
     output in_done;
     output cal_done;
     output done;
-	 
+
+
     wire newloop_w;
     wire [1:0] mode_w;
     wire crt_sig_w;
     wire wen_w;
     wire [7:0] Radda1_w;
-    wire [7:0] Radda2_w;
     wire [7:0] Raddb1_w;
-    wire [7:0] Raddb2_w;
     wire [7:0] TFadd1_w;
-    wire [7:0] TFadd2_w;
     wire [15:0] tw1_w;
-    wire [15:0] tw2_w;
     wire [15:0] DA1in_w;
     wire [15:0] DA1in_bu;
-    wire [15:0] DA2in_w;
-    wire [15:0] DA2in_bu;
     wire [15:0] DB1in_w;
     wire [15:0] DB1in_bu;
-    wire [15:0] DB2in_w;
-    wire [15:0] DB2in_bu;
     wire [15:0] DA1out_w;
-    wire [15:0] DA1out_out;
     wire [15:0] DA1out_bu;
-    wire [15:0] DA2out_w;
-    wire [15:0] DA2out_out;
-    wire [15:0] DA2out_bu;
     wire [15:0] DB1out_w;
-    wire [15:0] DB1out_out;
     wire [15:0] DB1out_bu;
-    wire [15:0] DB2out_w;
-    wire [15:0] DB2out_out;
-    wire [15:0] DB2out_bu;
     wire [15:0] data_in1;
     wire [15:0] data_in2;
-    wire [15:0] data_in3;
-    wire [15:0] data_in4;
 
+     
+    wire [7:0] a_inout1,b_inout1,c_inout1;
+    //wire [7:0] a_inout2,b_inout2,c_inout2;
+    wire [7:0] a_intt1,b_intt1,c_intt1;
+    //wire [7:0] a_intt2,b_intt2,c_intt2;
+    wire [7:0] a_ntt1,b_ntt1,c_ntt1;
+    //wire [7:0] a_ntt2,b_ntt2,c_ntt2;
+    wire [7:0] aa1,bb1,cc1;
+    //wire [7:0] aa2,bb2,cc2;
+    
+    wire [9:0] counterx1_w;
+	wire [8:0] counterx2_w; 
+    
+    INOUT_GEN1 iINOUT_GEN1(
+        .clk(clk),
+        .address1(counterx2_w),
+        .a({a_inout1,b_inout1,c_inout1})
+        );
+    
+//    INOUT_GEN2 iINOUT_GEN2(
+//        .clk(clk),
+//        .address1(counterx2_w),
+//        .a({a_inout2,b_inout2,c_inout2})
+//        );
+        
+    INTT_GEN1 iINTT_GEN1(
+        .clk(clk),
+        .address1(counterx1_w),
+        .a({a_intt1,b_intt1,c_intt1})
+        );
+        
+//    INTT_GEN2 iINTT_GEN2(
+//        .clk(clk),
+//        .address1(counterx1_w),
+//        .a({a_intt2,b_intt2,c_intt2})
+//        );
+   
+    NTT_GEN1 iNTT_GEN1(
+        .clk(clk),
+        .address1(counterx1_w),
+        .a({a_ntt1,b_ntt1,c_ntt1})
+        );
+        
+//    NTT_GEN2 iNTT_GEN2(
+//        .clk(clk),
+//        .address1(counterx1_w),
+//        .a({a_ntt2,b_ntt2,c_ntt2})
+//        );
+            
+            
+    assign aa1 = (mode_w == 2'b00) ? a_ntt1 : a_intt1;    
+    //assign aa2 = (mode_w == 2'b00) ? a_ntt2 : a_intt2;  
+    assign bb1 = (mode_w == 2'b00) ? b_ntt1 : b_intt1;  
+    //assign bb2 = (mode_w == 2'b00) ? b_ntt2 : b_intt2;  
+    assign cc1 = (mode_w == 2'b00) ? c_ntt1 : c_intt1;  
+    //assign cc2 = (mode_w == 2'b00) ? c_ntt2 : c_intt2;  
+    
+    assign Radda1_w = (mode_w[1] == 1'b1) ? a_inout1 : aa1;
+    //assign Radda2_w = (mode_w[1] == 1'b1) ? a_inout2 : aa2;
+    assign Raddb1_w = (mode_w[1] == 1'b1) ? b_inout1 : bb1;
+    //assign Raddb2_w = (mode_w[1] == 1'b1) ? b_inout2 : bb2;
+    assign TFadd1_w = (mode_w[1] == 1'b1) ? c_inout1 : cc1;
+    //assign TFadd2_w = (mode_w[1] == 1'b1) ? c_inout2 : cc2;
+    
+    wire [7:0] addressA1;
+    wire [7:0] addressB1;
+    assign init_done = (address_inb == 255) ? 1 : 0; 
+    assign addressA1 = start ? address_ina  : Radda1_w;
+    assign addressB1 = start ? address_inb  : Raddb1_w;
 
-	ROMIN1 iROMIN11 (
-		.clk(clk),
-		.address1(Radda1_w),
-		.address2(Radda2_w),
-		.a(data_in1),
-		.b(data_in2)
-		);
-	
-	ROMIN1 iROMIN12 (
-		.clk(clk),
-		.address1(Raddb1_w),
-		.address2(Raddb2_w),
-		.a(data_in3),
-		.b(data_in4)
-		);
+    
+//	ROMIN1 iROMIN11 (
+//		.clk(clk),
+//		.address1(Radda1_w),
+//		.address2(Raddb1_w),
+//		.a(data_in1),
+//		.b(data_in2)
+//		);
 		
-	 
-    Address_Gen iAddress_Gen1 (
+	RAM iRAM2 (
+			.clk(clk),
+			.DA1in(data_ina),
+			.DB1in(data_inb),
+			.A1radd(addressA1),
+			.B1radd(addressB1),
+			.DA1out(data_in1),
+			.DB1out(data_in2),
+			.we1(we),
+			.we2(we)
+			);	
+			
+	
+//	ROMIN1 iROMIN12 (
+//		.clk(clk),
+//		.address1(Raddb1_w),
+//		.address2(Raddb2_w),
+//		.a(data_in3),
+//		.b(data_in4)
+//		);
+		
+
+	mode imode1 (
+	   .clk(clk),
+	   .mode_in(mode),
+	   .cal_done(cal_done),
+	   .in_done(in_done),
+	   .mode(mode_w)
+	   );
+	
+    Address_Gen iAddress_Gen (
 		.clk(clk),
 		.rst(rst),
 		.newloop(newloop_w),
 		.mode(mode_w),
 		.ctr_sig(crt_sig_w),
-		.Radda1(Radda1_w),
-		.Radda2(Radda2_w),
-		.Raddb1(Raddb1_w),
-		.Raddb2(Raddb2_w),
-		.TFadd1(TFadd1_w),
-		.TFadd2(TFadd2_w)
+		.counterx1(counterx1_w),
+		.counterx2(counterx2_w)
 		);   
-
+		
 	assign DA1in_w = (in_done == 1'b0)? data_in1 : DA1in_bu;
-	assign DA2in_w = (in_done == 1'b0)? data_in2 : DA2in_bu;
-	assign DB1in_w = (in_done == 1'b0)? data_in3 : DB1in_bu;
-	assign DB2in_w = (in_done == 1'b0)? data_in4 : DB2in_bu;
+	//assign DA2in_w = (in_done == 1'b0)? data_in2 : DA2in_bu;
+	assign DB1in_w = (in_done == 1'b0)? data_in2 : DB1in_bu;
+	//assign DB2in_w = (in_done == 1'b0)? data_in4 : DB2in_bu;
 	
 	RAM iRAM1 (
 			.clk(clk),
 			.DA1in(DA1in_w),
-			.DA2in(DA2in_w),
 			.DB1in(DB1in_w),
-			.DB2in(DB2in_w),
 			.A1radd(Radda1_w),
-			.A2radd(Radda2_w),
 			.B1radd(Raddb1_w),
-			.B2radd(Raddb2_w),
 			.DA1out(DA1out_w),
-			.DA2out(DA2out_w),
 			.DB1out(DB1out_w),
-			.DB2out(DB2out_w),
-			.we(wen_w)
+			.we1(wen_w),
+			.we2(wen_w)
 			);		
-    
     
      control icontrol (
          .clk(clk),
          .rst(rst),
          .start(start),
-         .mode_in(mode),
          .crt_sig(crt_sig_w),
          .mode_out(mode_w),
          .newloop(newloop_w),
@@ -138,9 +205,7 @@ module wrap(clk,rst,start,mode,data_out1,data_out2,data_out3,data_out4,in_done,c
     ROM iROM (
         .clk(clk),
         .address1(TFadd1_w),
-        .address2(TFadd2_w),
-        .tw1(tw1_w),
-        .tw2(tw2_w)
+        .tw1(tw1_w)
         );
         
     butterfly ibutterfly1 (
@@ -153,23 +218,22 @@ module wrap(clk,rst,start,mode,data_out1,data_out2,data_out3,data_out4,in_done,c
         .d(DB1in_bu)
         );     
         
-    butterfly ibutterfly2 (
-        .clk(clk),
-        .mode(mode_w),
-        .a(DA2out_w),
-        .b(DB2out_w),
-        .w(tw2_w),
-        .c(DA2in_bu),
-        .d(DB2in_bu)
-        ); 
- 
+//    butterfly ibutterfly2 (
+//        .clk(clk),
+//        .mode(mode_w),
+//        .a(DA2out_w),
+//        .b(DB2out_w),
+//        .w(tw2_w),
+//        .c(DA2in_bu),
+//        .d(DB2in_bu)
+//        ); 
+
 //	assign data_out1 = DA1out_w;
 //	assign data_out2 = DA2out_w;
 //	assign data_out3 = DB1out_w;
 //	assign data_out4 = DB2out_w;
 	assign data_out1 = (cal_done == 1) ? DA1out_w : 0;
-	assign data_out2 = (cal_done == 1) ? DA2out_w : 0;
-	assign data_out3 = (cal_done == 1) ? DB1out_w : 0;
-	assign data_out4 = (cal_done == 1) ? DB2out_w : 0;
+	assign data_out2 = (cal_done == 1) ? DB1out_w : 0;
+
 endmodule
 

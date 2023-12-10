@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sat Dec 09 22:26:40 2023
+Fitter Status : Successful - Mon Dec 11 00:07:24 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : DE10_Standard_GHRD
 Top-level Entity Name : DE10_Standard_GHRD
 Family : Cyclone V
 Device : 5CSXFC6D6F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 3,267 / 41,910 ( 8 % )
-Total registers : 4874
+Logic utilization (in ALMs) : 3,285 / 41,910 ( 8 % )
+Total registers : 4858
 Total pins : 338 / 499 ( 68 % )
 Total virtual pins : 0
 Total block memory bits : 72,448 / 5,662,720 ( 1 % )
