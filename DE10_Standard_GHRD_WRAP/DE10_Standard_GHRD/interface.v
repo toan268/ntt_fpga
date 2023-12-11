@@ -43,7 +43,7 @@ module interface(
 	output wire 			[8:0] wr_used_fifo3_top,
 	output wire				rd_empty_fifo3_top,
 	output wire 			[8:0] rd_used_fifo3_top,
-	output wire 			[31:0]	rd_data_fifo3_top,
+	output wire [31:0]	rd_data_fifo3_top,
 	output wire 			init_done
 	);
 wire [31:0]	rd_data1,rd_data2;

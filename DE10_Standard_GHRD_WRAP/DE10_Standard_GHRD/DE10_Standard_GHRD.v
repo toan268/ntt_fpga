@@ -351,8 +351,8 @@ soc_system u0 (
         .slave_template_0_user_interface_dataout_3  (wr_req_fifo1_top),  //                                .datain_11
         .slave_template_0_user_interface_dataout_4  (wr_data1_fifo1_top),  //                                .datain_11
         .slave_template_0_user_interface_dataout_5  (wr_data2_fifo2_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_6  (sel_mux1_top),  //                                .datain_11
-        .slave_template_0_user_interface_dataout_7  (sel_mux2_top),  //                                .datain_11
+        .slave_template_0_user_interface_dataout_6  (mux),  //                                .datain_11
+        .slave_template_0_user_interface_dataout_7  (rst_top),  //                                .datain_11
         .slave_template_0_user_interface_dataout_8  (mode_top),  //                                .datain_11
         .slave_template_0_user_interface_dataout_9  (start_top),  //                                .datain_11
         .slave_template_0_user_interface_dataout_10  (we_top),  //                                .datain_11
@@ -439,7 +439,9 @@ parameter           WIDTH = 32; //data length
 	wire   rd_empty_fifo3_top;
 	wire   [8:0] rd_used_fifo3_top;
 	wire   [31:0] rd_data_fifo3_top;
-	wire   init_done;
+	wire init_done;
+	wire [1:0] mux;
+	assign mux  = { sel_mux1_top ,sel_mux2_top};
 interface(
 	//***********input***************
 	.clk_top(CLOCK_50),
@@ -457,7 +459,7 @@ interface(
 	.mode_top(mode_top),
 	.start_top(start_top),
 	.we_top(we_top),
-	.rst_top(hps_fpga_reset_n),
+	.rst_top(rst_top),
 
 	.read_clk_top(read_clk_top),
 	.write_clk_top(write_clk_top),
