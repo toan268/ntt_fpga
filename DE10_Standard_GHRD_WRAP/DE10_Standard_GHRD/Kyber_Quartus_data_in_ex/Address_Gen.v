@@ -99,7 +99,7 @@ module Address_Gen(clk,rst,newloop,mode,ctr_sig,counterx1,counterx2);
 							counter_clk <= 0;
 						end
 					end
-					else 
+					else if (mode == IN)
 					begin 
 					    ctr_sig <= 0;
 						if ((counter_clk > 2) | (counter < 2))  begin 
@@ -109,6 +109,12 @@ module Address_Gen(clk,rst,newloop,mode,ctr_sig,counterx1,counterx2);
 							ctr_sig <= 0;
 							counter_clk <= 0;
 						end
+					end
+					else
+					begin 
+					    ctr_sig <= 0;
+                        counterx2 <= counterx2 + 1;
+                        counter_clk <= 0;
 					end
                 end
             end

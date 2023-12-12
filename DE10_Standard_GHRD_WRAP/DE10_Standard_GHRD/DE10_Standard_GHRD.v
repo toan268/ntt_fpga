@@ -370,14 +370,14 @@ soc_system u0 (
         .slave_template_0_user_interface_datain_5   (wr_used_fifo2_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_6   (rd_empty_fifo2_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_7   (rd_used_fifo2_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_8  (in_done_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_9  (done_top),   //                                .datain_6
+        //.slave_template_0_user_interface_datain_8  (in_done_top),   //                                .datain_6
+        //.slave_template_0_user_interface_datain_9  (done_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_10  (wr_full_fifo3_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_11  (wr_used_fifo3_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_12   (rd_empty_fifo3_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_13   (rd_used_fifo3_top),   //                                .datain_6
 		  .slave_template_0_user_interface_datain_14   (rd_data_fifo3_top),   //                                .datain_6
-		  .slave_template_0_user_interface_datain_15   (init_done)   //                                .datain_6
+		  .slave_template_0_user_interface_datain_15   ({init_done,in_done_top,cal_done,done_top})   //                                .datain_6
 
 );
 // DDR3 SDRAM
@@ -439,7 +439,7 @@ parameter           WIDTH = 32; //data length
 	wire   rd_empty_fifo3_top;
 	wire   [8:0] rd_used_fifo3_top;
 	wire   [31:0] rd_data_fifo3_top;
-	wire init_done;
+	wire init_done,cal_done;
 	wire [1:0] mux;
 	assign mux  = { sel_mux1_top ,sel_mux2_top};
 interface(
@@ -488,7 +488,8 @@ interface(
 	.rd_empty_fifo3_top(rd_empty_fifo3_top),
 	.rd_used_fifo3_top(rd_used_fifo3_top),
 	.rd_data_fifo3_top(rd_data_fifo3_top),
-	.init_done(init_done)
+	.init_done(init_done),
+	.cal_done(cal_done)
 	);
 //assign fpga_led_internal[3:0] =  fifodout_delay[3:0];
 	 // Debounce logic to clean out glitches within 1ms

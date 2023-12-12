@@ -96,6 +96,7 @@ init_done <= Equal3.DB_MAX_OUTPUT_PORT_TYPE
 in_done <= in_done.DB_MAX_OUTPUT_PORT_TYPE
 cal_done <= cal_done.DB_MAX_OUTPUT_PORT_TYPE
 done <= control:icontrol.done
+wr_req <= wr_req.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |wrap|INOUT_GEN1:iINOUT_GEN1
@@ -674,10 +675,12 @@ mode[0] => Equal1.IN3
 mode[0] => Equal2.IN3
 mode[0] => Equal3.IN1
 mode[0] => Equal4.IN0
+mode[0] => Equal5.IN1
 mode[1] => Equal1.IN2
 mode[1] => Equal2.IN2
 mode[1] => Equal3.IN0
 mode[1] => Equal4.IN1
+mode[1] => Equal5.IN0
 ctr_sig <= ctr_sig~reg0.DB_MAX_OUTPUT_PORT_TYPE
 counterx1[0] <= counterx1[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 counterx1[1] <= counterx1[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE

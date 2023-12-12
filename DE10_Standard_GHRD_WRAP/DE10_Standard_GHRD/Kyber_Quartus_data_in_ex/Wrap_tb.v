@@ -74,9 +74,7 @@ module Wrap_tb;
     
     wire done;
     
-	 
-	 
-	 
+    wire wr_req;
 
 
   // Instantiate the wrap module 
@@ -96,7 +94,8 @@ module Wrap_tb;
 		.init_done(init_done),
 		.in_done(in_done),
 		.cal_done(cal_done),
-		.done(done)
+		.done(done),
+		.wr_req(wr_req)
 		);
 
 

@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Sun Dec 10 17:20:33 2023
+Analysis & Synthesis Status : Successful - Mon Dec 11 20:47:15 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : wrap
 Top-level Entity Name : wrap
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
 Total registers : 341
-Total pins : 89
+Total pins : 90
 Total virtual pins : 0
 Total block memory bits : 49,408
 Total DSP Blocks : 4

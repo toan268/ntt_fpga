@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data_out1,data_out2,init_done,in_done,cal_done,done);
+module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data_out1,data_out2,init_done,in_done,cal_done,done,wr_req);
     input clk;
     input rst;
     input start;
@@ -32,7 +32,7 @@ module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data
     output in_done;
     output cal_done;
     output done;
-
+    output wr_req;
 
     wire newloop_w;
     wire [1:0] mode_w;
@@ -65,6 +65,7 @@ module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data
     
     wire [9:0] counterx1_w;
 	wire [8:0] counterx2_w; 
+	wire [8:0] counterx3_w; 
     
     INOUT_GEN1 iINOUT_GEN1(
         .clk(clk),
@@ -188,7 +189,7 @@ module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data
 			.we1(wen_w),
 			.we2(wen_w)
 			);		
-    
+			
      control icontrol (
          .clk(clk),
          .rst(rst),
@@ -234,6 +235,7 @@ module wrap(clk,rst,start,mode,we,address_ina,address_inb,data_ina,data_inb,data
 //	assign data_out4 = DB2out_w;
 	assign data_out1 = (cal_done == 1) ? DA1out_w : 0;
 	assign data_out2 = (cal_done == 1) ? DB1out_w : 0;
+    assign wr_req = ((mode_w == 2'b11) & (done == 0)) ? 1 : 0;
 
 endmodule
 

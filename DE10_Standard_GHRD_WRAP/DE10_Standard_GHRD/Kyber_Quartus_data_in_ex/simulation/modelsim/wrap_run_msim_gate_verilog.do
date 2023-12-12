@@ -7,7 +7,7 @@ vmap work gate_work
 
 vlog -vlog01compat -work work +incdir+. {wrap.vo}
 
-vlog -vlog01compat -work work +incdir+D:/STUDY/Hardware\ implementation\ of\ CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3 {D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV3/Wrap_tb.v}
+vlog -vlog01compat -work work +incdir+D:/STUDY/Hardware\ implementation\ of\ CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV4 {D:/STUDY/Hardware implementation of CRYSTALS-Dlithium/Kyber/code/Kyber_QuartusV4/Wrap_tb.v}
 
 vsim -t 1ps +transport_int_delays +transport_path_delays -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  Wrap_tb
 

@@ -44,7 +44,7 @@ module interface(
 	output wire				rd_empty_fifo3_top,
 	output wire 			[8:0] rd_used_fifo3_top,
 	output wire [31:0]	rd_data_fifo3_top,
-	output wire 			init_done
+	output wire 			init_done,cal_done
 	);
 wire [31:0]	rd_data1,rd_data2;
 wire read_clk;
@@ -99,6 +99,7 @@ end
 assign  read_clk = (sel_mux1_top==1'b1)?read_clk_top:clk_top;
 wire [15:0] data_ina,data_inb,data_out1,data_out2;
 wire [7:0] address_ina,address_inb;
+wire wr_req;
 wrap top(
 	//***********input***************
     .clk(clk_top),
@@ -116,7 +117,8 @@ wrap top(
     .in_done(in_done_top),
     .cal_done(cal_done),
     .done(done_top),
-	 .init_done(init_done)
+	 .init_done(init_done),
+	 .wr_req(wr_req)
 );
 assign rd_data1[23:16] = address_ina;
 assign rd_data1[15:0] = data_ina;
@@ -147,7 +149,7 @@ fifo fifo3(
 
 	.wr_dat({data_out2,data_out1}),
 	.wr_clk(write_clk),
-	.wr_req(cal_done),
+	.wr_req(wr_req),
 	.wr_full(wr_full_fifo3_top),
 	.wr_used(wr_used_fifo3_top)
 );

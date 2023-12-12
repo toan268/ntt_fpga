@@ -32,8 +32,8 @@ module control(clk,rst,start,crt_sig,mode_out,newloop,wen,done,cal_done,in_done)
     output reg cal_done;
     output reg in_done;
 //    output reg [7:0] counter5; //counter calculate 
-//    output reg [31:0] counter6; //counter calculate 
-    //output reg [31:0] counter3; //counter calculate each layer
+    //output reg [31:0] counter6; //counter calculate 
+  //  output reg [31:0] counter2; //counter calculate each layer
     //reg [15:0] counter;
     reg [31:0] counter1; //counter input
     reg [3:0] counter2; //counter layer
@@ -71,7 +71,7 @@ module control(clk,rst,start,crt_sig,mode_out,newloop,wen,done,cal_done,in_done)
                 NTT,INTT: begin
                     if (crt_sig) 
                     begin
-                        newloop <= 1;
+                        newloop <= (cal_done) ? 0 : 1;
                         counter3 <= 0;
                         counter5 <= 0;
                         counter6 <= 0;
@@ -164,18 +164,15 @@ module control(clk,rst,start,crt_sig,mode_out,newloop,wen,done,cal_done,in_done)
                 OUT: begin
                     counter6 <= counter6 + 1;
                     wen <= 0;
-                    if (counter6 == 0)
+                    newloop <= 0; 
+//                    if (counter6 == 0)
+//                    begin
+//                        newloop <= 1;
+//                    end
+                    //else 
+                    if (counter6 == 129)
                     begin
-                        newloop <= 1;
-                    end
-                    else if (counter6 == 516)
-                    begin
-                        done <= 1;
-                        newloop <= 0; 
-                    end
-                    else
-                    begin 
-                        newloop <= 0;  
+                        done <= 1; 
                     end
                 end
                 endcase 

@@ -148,6 +148,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "wr_req",
+					"strict" : false
+				},
+				{
 					"name" : "address_inb[4]",
 					"strict" : false
 				},
