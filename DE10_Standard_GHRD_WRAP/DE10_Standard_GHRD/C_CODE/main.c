@@ -37,15 +37,15 @@
 #define FI_FIFO_OUT_RD_CLK(data)		alt_write_word(h2f_CAM_addr + DATA_OUT_14, data)
 #define FI_FIFO_OUT_RD_REQ(data)		alt_write_word(h2f_CAM_addr + DATA_OUT_15, data)
 
-#define FO_FIFO_IN1_WR_FULL				alt_read_word(h2f_CAM_addr + DATA_IN_0)
+#define FO_FIFO_IN_STATUS				alt_read_word(h2f_CAM_addr + DATA_IN_0) //RD_EMPTY1,WR_FULL1,WR_FULL2,RD_EMPTY2
 #define FO_FIFO_IN1_WR_USED				alt_read_word(h2f_CAM_addr + DATA_IN_1)
-#define FO_FIFO_IN1_RD_EMPTY			alt_read_word(h2f_CAM_addr + DATA_IN_2)
+#define TEST_FIFO_IN2_DATA_OUT			alt_read_word(h2f_CAM_addr + DATA_IN_2)
 #define FO_FIFO_IN1_RD_USED				alt_read_word(h2f_CAM_addr + DATA_IN_3)
-#define FO_FIFO_IN2_WR_FULL				alt_read_word(h2f_CAM_addr + DATA_IN_4)
+#define TEST_NTT_ADDR_INA				alt_read_word(h2f_CAM_addr + DATA_IN_4)
 #define FO_FIFO_IN2_WR_USED				alt_read_word(h2f_CAM_addr + DATA_IN_5)
-#define FO_FIFO_IN2_RD_EMPTY			alt_read_word(h2f_CAM_addr + DATA_IN_6)
+#define TEST_NTT_DATA_INA				alt_read_word(h2f_CAM_addr + DATA_IN_6)
 #define FO_FIFO_IN2_RD_USED				alt_read_word(h2f_CAM_addr + DATA_IN_7)
-// #define FO_NTT_IN_DONE					alt_read_word(h2f_CAM_addr + DATA_IN_8)
+#define TEST_NTT_DATA_OUT				alt_read_word(h2f_CAM_addr + DATA_IN_8)
 // #define FO_NTT_DONE						alt_read_word(h2f_CAM_addr + DATA_IN_9)
 #define FO_FIFO_OUT3_WR_FULL			alt_read_word(h2f_CAM_addr + DATA_IN_10)
 #define FO_FIFO_OUT3_WR_USED			alt_read_word(h2f_CAM_addr + DATA_IN_11)
@@ -119,32 +119,70 @@ int main(int argc, char **argv) {
 		printf("=============================================\n");
 		// FI_FIFO_IN_ACLR(0);
 		// FI_FIFO_OUT_ACLR(0);
-		FI_FIFO_IN_RD_REQ(0);
-		FI_FIFO_IN_WR_REQ(0);
-		FI_FIFO_OUT_RD_REQ(0);
-		FI_FIFO_CLK_MUX_CTL(0);
-		printf("==========Reset NTT core==========\n");
-		FI_NTT_RESET(0);
-		FI_NTT_RESET(1);
-		FI_NTT_RESET(0);
-		printf("==========WE=0; START=1; MODE=0==========\n");
-		FI_NTT_WE(0);
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		printf("DATA OUT =%x\n",FO_FIFO_OUT3_RD_DATA);
+		printf("=================RESET SYSTEM================\n");
 		FI_NTT_START(1);
-		FI_NTT_MODE(0); //NTT
+		// FI_NTT_RESET(0);
+		// FI_FIFO_IN_ACLR(0);
+		// FI_FIFO_OUT_ACLR(0);
+		FI_NTT_RESET(1);
+		FI_FIFO_IN_ACLR(1);
+		FI_FIFO_OUT_ACLR(1);
+		sleep(1);
+		FI_NTT_RESET(0);
+		FI_FIFO_IN_ACLR(0);
+		FI_FIFO_OUT_ACLR(0);
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		printf("DATA OUT =%x\n",FO_FIFO_OUT3_RD_DATA);
+		sleep(10);
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		printf("DATA OUT =%x\n",FO_FIFO_OUT3_RD_DATA);
+		// FI_FIFO_IN_RD_REQ(0);
+		// FI_FIFO_IN_WR_REQ(0);
+		// FI_FIFO_OUT_RD_REQ(0);
+		// FI_FIFO_CLK_MUX_CTL(0);
 		uint16_t i;
-		for (i=1; i<=3; i++)
-		{
-			FI_FIFO_IN_WR_CLK(0);
-			FI_FIFO_OUT_RD_CLK(0);
-			// sleep(1);
-			FI_FIFO_IN_WR_CLK(1);
-			FI_FIFO_OUT_RD_CLK(1);
-			// sleep(1);
-		}
-		FI_FIFO_IN_WR_CLK(0);
-		FI_FIFO_OUT_RD_CLK(0);
+		// for (i=1; i<=3; i++)
+		// {
+		// 	FI_FIFO_IN_WR_CLK(0);
+		// 	FI_FIFO_OUT_RD_CLK(0);
+		// 	// sleep(1);
+		// 	FI_FIFO_IN_WR_CLK(1);
+		// 	FI_FIFO_OUT_RD_CLK(1);
+		// 	// sleep(1);
+		// }
+		// FI_FIFO_IN_WR_CLK(0);
+		// FI_FIFO_OUT_RD_CLK(0);
 		FI_FIFO_IN_WR_REQ(1);
-		// sleep(1);
+		sleep(1);
 		uint16_t in_cnt;
 		printf("=========Data in===========\n");
 		for (in_cnt=0; in_cnt<128; in_cnt++)
@@ -153,6 +191,7 @@ int main(int argc, char **argv) {
 			uint16_t cnt2 = in_cnt*2+1;
 			int32_t data1 = cnt1<<16|din[cnt1];
 			int32_t data2 = cnt2<<16|din[cnt2];
+			// uint16_t t;
 			FI_FIFO_IN_WR_CLK(0);
 			// sleep(1);
 			FI_FIFO_IN1_DIN(data1);
@@ -160,6 +199,27 @@ int main(int argc, char **argv) {
 			FI_FIFO_IN2_DIN(data2);
 			// printf("0x%x \n",data2);
 			FI_FIFO_IN_WR_CLK(1);
+			// for(t=0;t<100;t++);
+			// if (in_cnt == 126)
+			// {
+			// printf("========Print Data 253&254=========\n");
+			// printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+			// printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+			// printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+			// printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+			// printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+			// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+			// }
+			// if (in_cnt == 127)
+			// {
+			printf("========Print Data %d&%d=========\n",cnt1,cnt2);
+			printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+			printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+			printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+			printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+			printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+			printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+			// }
 			// sleep(1);
 			// printf("FF1_WR_FULL=%x\n",FO_FIFO_IN1_WR_FULL);
 			// printf("FF1_WR_USED=%x\n",FO_FIFO_IN1_WR_USED);
@@ -180,86 +240,124 @@ int main(int argc, char **argv) {
 		}
 		FI_FIFO_IN_WR_CLK(0);
 		printf("========END INPUT STAGE: WRITE to FIFO done=======\n");
-		printf("FF1_WR_FULL=%x\n",FO_FIFO_IN1_WR_FULL);
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
 		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
-		printf("FF1_RD_EMPTY=%x\n",FO_FIFO_IN1_RD_EMPTY);
 		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
-		printf("FF2_WR_FULL=%x\n",FO_FIFO_IN2_WR_FULL);
 		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
-		printf("FF2_RD_EMPTY=%x\n",FO_FIFO_IN2_RD_EMPTY);
 		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
-		printf("========WE=1=======\n");
+		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		printf("DATA OUT =%x\n",FO_FIFO_OUT3_RD_DATA);
+		// printf("==========Reset NTT core==========\n");
+		// FI_NTT_RESET(0);
+		// sleep(1);
+		// FI_NTT_RESET(1);
+		// sleep(1);
+		// FI_NTT_RESET(0);
+		// sleep(1);
+		// // printf("==========WE=0; START=1; MODE=0==========\n");
+		// // FI_NTT_WE(0);
+		// // FI_NTT_START(1);
+		FI_NTT_MODE(0); //NTT
+		// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		// printf("========WE=1=======\n");
 		FI_NTT_WE(1);
-		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
 		FI_FIFO_IN_RD_REQ(1);
-		printf("================sleep 1s===============\n");
-		sleep(1);
-		// while ((FO_FIFO_IN1_RD_EMPTY==0)&&(FO_FIFO_IN2_RD_EMPTY==0))
-		// {
-		// 	printf("Waiting read process...");
-		// 	FI_FIFO_IN_WR_CLK(0);
-		// 	FI_FIFO_IN_WR_CLK(1);
-		// 	printf("NTT_IN_DONE=%x\n",FO_NTT_IN_DONE);
-		// }
-		printf("==========End Read to FPGA===========\n");
-		printf("FF1_WR_FULL=%x\n",FO_FIFO_IN1_WR_FULL);
-		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
-		printf("FF1_RD_EMPTY=%x\n",FO_FIFO_IN1_RD_EMPTY);
-		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
-		printf("FF2_WR_FULL=%x\n",FO_FIFO_IN2_WR_FULL);
-		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
-		printf("FF2_RD_EMPTY=%x\n",FO_FIFO_IN2_RD_EMPTY);
-		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		// printf("================sleep 1s===============\n");
+		while(FO_NTT_STATUS!=0x8)
+		{
+			printf("=============================================\n");
+			printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+			printf("FF2_OUT=0x%x\n",TEST_FIFO_IN2_DATA_OUT);
+			printf("ADDR_INA=0x%x; DATA_INA=0x%x\n",TEST_NTT_ADDR_INA,TEST_NTT_DATA_INA);
+		}
 		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FF2_OUT=0x%x\n",TEST_FIFO_IN2_DATA_OUT);
+		printf("ADDR_INA=0x%x; DATA_INA=0x%x\n",TEST_NTT_ADDR_INA,TEST_NTT_DATA_INA);
+		// // while ((FO_FIFO_IN1_RD_EMPTY==0)&&(FO_FIFO_IN2_RD_EMPTY==0))
+		// // {
+		// // 	printf("Waiting read process...");
+		// // 	FI_FIFO_IN_WR_CLK(0);
+		// // 	FI_FIFO_IN_WR_CLK(1);
+		// // 	printf("NTT_IN_DONE=%x\n",FO_NTT_IN_DONE);
+		// // }
+		// printf("==========End Read to FPGA===========\n");
+		// printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		// printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		// printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		// printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		// printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		// printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		// printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		// printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		// printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		// printf("DATA OUT %d=%x\n",i,FO_FIFO_OUT3_RD_DATA);
 		printf("========WE=0=======\n");
 		FI_FIFO_IN_RD_REQ(0);
 		FI_NTT_WE(0);
-		printf("FF1_WR_FULL=%x\n",FO_FIFO_IN1_WR_FULL);
-		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
-		printf("FF1_RD_EMPTY=%x\n",FO_FIFO_IN1_RD_EMPTY);
-		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
-		printf("FF2_WR_FULL=%x\n",FO_FIFO_IN2_WR_FULL);
-		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
-		printf("FF2_RD_EMPTY=%x\n",FO_FIFO_IN2_RD_EMPTY);
-		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
-		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
-		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
-		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
-		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
-		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
-		printf("DATA OUT %d=%x\n",i,FO_FIFO_OUT3_RD_DATA);
-		FI_FIFO_OUT_ACLR(0);
-		FI_FIFO_OUT_ACLR(1);
-		FI_FIFO_OUT_ACLR(0);
-		printf("=======Clear FIFO 3===============\n");
-		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
-		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
-		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
-		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
-		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
-		printf("DATA OUT %d=%x\n",i,FO_FIFO_OUT3_RD_DATA);
-				for (i=1; i<=3; i++)
-		{
-			FI_FIFO_OUT_WR_CLK(0);
-			FI_FIFO_OUT_RD_CLK(0);
-			// sleep(1);
-			FI_FIFO_OUT_RD_CLK(1);
-			FI_FIFO_OUT_WR_CLK(1);
-			// sleep(1);
-		}
-		// printf("==============Sleep 1========\n");
-		// sleep(1);
-		// FI_NTT_START(0);
-		// while (FO_NTT_INIT_DONE==0)
+		// printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		// printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		// printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		// printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		// printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		// printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		// printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		// printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		// printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		// printf("DATA OUT %d=%x\n",i,FO_FIFO_OUT3_RD_DATA);
+		// FI_FIFO_OUT_ACLR(0);
+		// FI_FIFO_OUT_ACLR(1);
+		// FI_FIFO_OUT_ACLR(0);
+		// printf("=======Clear FIFO 3===============\n");
+		// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		// printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		// printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		// printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		// printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		// printf("DATA OUT %d=%x\n",i,FO_FIFO_OUT3_RD_DATA);
+		// 		for (i=1; i<=3; i++)
 		// {
-		// 	printf("Wating init done signal ...\n");
+		// 	// FI_FIFO_OUT_WR_CLK(0);
+		// 	FI_FIFO_OUT_RD_CLK(0);
+		// 	// sleep(1);
+		// 	// FI_FIFO_OUT_RD_CLK(1);
+		// 	FI_FIFO_OUT_WR_CLK(1);
+		// 	// sleep(1);
 		// }
-		// sleep(2);
+		// // FI_FIFO_OUT_WR_CLK(0);
+		// FI_FIFO_OUT_RD_CLK(0);		
+		// printf("=======FIFO 3 after clear===============\n");
+		// printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		// printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		// printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		// printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		// printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		// printf("DATA OUT %d=%x\n",i,FO_FIFO_OUT3_RD_DATA);
+		// // printf("==============Sleep 1========\n");
+		// // sleep(1);
+		// FI_NTT_START(0);
+		// // while (FO_NTT_INIT_DONE==0)
+		// // {
+		// // 	printf("Wating init done signal ...\n");
+		// // }
+		// // sleep(2);
 		printf("========START=0=======\n");		
 		FI_NTT_START(0);
-		printf("==========Sleep 2s===========\n");
-		sleep(2);
-		FI_NTT_START(1);
+		printf("==========Waiting NTT Cal Done===========\n");
+		while (FO_NTT_STATUS!=0xf)
+		{
+			printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+			printf("NNT DATA OUT=0x%x\n",TEST_NTT_DATA_OUT);
+		}
+		
+		// // FI_NTT_START(1);
 		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
 		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
 		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
@@ -277,7 +375,7 @@ int main(int argc, char **argv) {
 		FI_FIFO_OUT_RD_CLK(0);
 		FI_FIFO_OUT_RD_REQ(1);
 		printf("========Read data out=======\n");	
-		for (i=1; i<=256; i++)
+		for (i=1; i<=130; i++)
 		{
 			FI_FIFO_OUT_RD_CLK(1);
 			printf("========Read block=======\n");
@@ -286,7 +384,6 @@ int main(int argc, char **argv) {
 			printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
 			printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
 			printf("DATA OUT %d=%x\n",i,FO_FIFO_OUT3_RD_DATA);
-			// sleep(1);
 			FI_FIFO_OUT_RD_CLK(0);
 			// sleep(1);
 		}
@@ -301,14 +398,11 @@ int main(int argc, char **argv) {
 		}
 		FI_FIFO_IN_WR_CLK(0);
 		FI_FIFO_OUT_RD_CLK(0);
-		printf("===============print end status=========================");
-		printf("FF1_WR_FULL=%x\n",FO_FIFO_IN1_WR_FULL);
+		printf("===============print end status=========================\n");
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
 		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
-		printf("FF1_RD_EMPTY=%x\n",FO_FIFO_IN1_RD_EMPTY);
 		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
-		printf("FF2_WR_FULL=%x\n",FO_FIFO_IN2_WR_FULL);
 		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
-		printf("FF2_RD_EMPTY=%x\n",FO_FIFO_IN2_RD_EMPTY);
 		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
 		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
 		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
@@ -316,6 +410,66 @@ int main(int argc, char **argv) {
 		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
 		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
 		printf("FO_FIFO_OUT3_RD_DATA=%x\n",FO_FIFO_OUT3_RD_DATA);
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		printf("DATA OUT =%x\n",FO_FIFO_OUT3_RD_DATA);
+		printf("=================RESET SYSTEM================\n");
+		FI_NTT_START(1);
+		// FI_NTT_RESET(0);
+		// FI_FIFO_IN_ACLR(0);
+		// FI_FIFO_OUT_ACLR(0);
+		FI_NTT_RESET(1);
+		FI_FIFO_IN_ACLR(1);
+		FI_FIFO_OUT_ACLR(1);
+		sleep(1);
+		FI_NTT_RESET(0);
+		FI_FIFO_IN_ACLR(0);
+		FI_FIFO_OUT_ACLR(0);
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		printf("DATA OUT =%x\n",FO_FIFO_OUT3_RD_DATA);
+		sleep(10);
+		printf("FF_IN_STATUS=0x%x\n",FO_FIFO_IN_STATUS);
+		printf("FF1_WR_USED=0x%x\n",FO_FIFO_IN1_WR_USED);
+		printf("FF1_RD_USED=0x%x\n",FO_FIFO_IN1_RD_USED);
+		printf("FF2_WR_USED=0x%x\n",FO_FIFO_IN2_WR_USED);
+		printf("FF2_RD_USED=0x%x\n",FO_FIFO_IN2_RD_USED);
+		printf("FO_NTT_STATUS=%x\n",FO_NTT_STATUS);
+		printf("FO_FIFO_OUT3_WR_FULL=%x\n",FO_FIFO_OUT3_WR_FULL);
+		printf("FO_FIFO_OUT3_WR_USED=0x%x\n",FO_FIFO_OUT3_WR_USED);
+		printf("FO_FIFO_OUT3_RD_EMPTY=%x\n",FO_FIFO_OUT3_RD_EMPTY);
+		printf("FO_FIFO_OUT3_RD_USED=0x%x\n",FO_FIFO_OUT3_RD_USED);
+		printf("DATA OUT =%x\n",FO_FIFO_OUT3_RD_DATA);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		// printf("==========Sleep 20s===========\n");
 		// sleep(20);
