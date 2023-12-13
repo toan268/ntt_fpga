@@ -362,15 +362,15 @@ soc_system u0 (
         .slave_template_0_user_interface_dataout_14  (rd_clk_fifo3_top),  //                                .datain_11
         .slave_template_0_user_interface_dataout_15  (rd_req_fifo3_top),  //                                .datain_11
 // from fpga
-		  .slave_template_0_user_interface_datain_0   (wr_full_fifo1_top),   //                                .datain_0
+		  .slave_template_0_user_interface_datain_0   ({rd_empty_fifo1_top,wr_full_fifo1_top,wr_full_fifo2_top,rd_empty_fifo2_top}),   //                                .datain_0
         .slave_template_0_user_interface_datain_1   (wr_used_fifo1_top) ,  //                                .datain_1
-        .slave_template_0_user_interface_datain_2   (rd_empty_fifo1_top), //                                .datain_4
+        .slave_template_0_user_interface_datain_2   (test_rd_dat_2), //                                .datain_4
         .slave_template_0_user_interface_datain_3   (rd_used_fifo1_top),   //                                .datain_5
-        .slave_template_0_user_interface_datain_4   (wr_full_fifo2_top),   //                                .datain_6
+        .slave_template_0_user_interface_datain_4   (test_address_ina_1),   //                                .datain_6
         .slave_template_0_user_interface_datain_5   (wr_used_fifo2_top),   //                                .datain_6
-        .slave_template_0_user_interface_datain_6   (rd_empty_fifo2_top),   //                                .datain_6
+        .slave_template_0_user_interface_datain_6   (test_data_ina_1),   //                                .datain_6
         .slave_template_0_user_interface_datain_7   (rd_used_fifo2_top),   //                                .datain_6
-        //.slave_template_0_user_interface_datain_8  (in_done_top),   //                                .datain_6
+        .slave_template_0_user_interface_datain_8  (test_wr_dat_1),   //                                .datain_6
         //.slave_template_0_user_interface_datain_9  (done_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_10  (wr_full_fifo3_top),   //                                .datain_6
         .slave_template_0_user_interface_datain_11  (wr_used_fifo3_top),   //                                .datain_6
@@ -489,8 +489,16 @@ interface(
 	.rd_used_fifo3_top(rd_used_fifo3_top),
 	.rd_data_fifo3_top(rd_data_fifo3_top),
 	.init_done(init_done),
-	.cal_done(cal_done)
+	.cal_done(cal_done),
+	.test_wr_dat_1(test_wr_dat_1),
+	.test_rd_dat_2(test_rd_dat_2),
+	.test_data_ina_1(test_data_ina_1),
+	.test_address_ina_1(test_address_ina_1)
 	);
+	 wire [31:0] 	test_rd_dat_2			;
+	 wire [7:0]		test_address_ina_1	;
+	 wire [15:0]   test_data_ina_1		;
+	 wire [31:0]	test_wr_dat_1			;
 //assign fpga_led_internal[3:0] =  fifodout_delay[3:0];
 	 // Debounce logic to clean out glitches within 1ms
 debounce debounce_inst (

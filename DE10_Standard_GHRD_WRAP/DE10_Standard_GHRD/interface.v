@@ -36,19 +36,29 @@ module interface(
 	output wire				rd_empty_fifo2_top,
 	output wire 			[8:0] rd_used_fifo2_top,
 	
-	output wire 			in_done_top,
-	output wire 			done_top,
+	output wire 			in_done_top				,
+	output wire 			done_top					,
 	
-	output wire 			wr_full_fifo3_top,
+	output wire 			wr_full_fifo3_top		,
 	output wire 			[8:0] wr_used_fifo3_top,
-	output wire				rd_empty_fifo3_top,
+	output wire				rd_empty_fifo3_top	,
 	output wire 			[8:0] rd_used_fifo3_top,
 	output wire [31:0]	rd_data_fifo3_top,
-	output wire 			init_done,cal_done
+	output wire 			init_done,cal_done,
+	
+	output wire [31:0] 	test_rd_dat_2			,
+	output wire [7:0]		test_address_ina_1	,
+	output wire [15:0]   test_data_ina_1		,
+	output wire [31:0]	test_wr_dat_1
 	);
 wire [31:0]	rd_data1,rd_data2;
 wire read_clk;
 wire write_clk;
+assign test_rd_dat_2 		= rd_data2;
+assign test_address_ina_1 	= address_ina;
+assign test_data_ina_1 		= data_ina;
+assign test_wr_dat_1 		= {data_out2,data_out1};
+
 fifo fifo1(
 	.aclr(aclr_fifo1_top),
 
