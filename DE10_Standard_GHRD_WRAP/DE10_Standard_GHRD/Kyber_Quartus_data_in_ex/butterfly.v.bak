@@ -153,8 +153,8 @@ module butterfly(clk,mode,a,b,w,c,d);
 	assign d_ntt = sub;
 	//////////
 	//mode INTT
-	assign c_intt  = {1'b0,sum[15:1]};
-	assign d_intt = {1'b0,ba[15:1]};
+	assign c_intt  = sum;
+	assign d_intt = ba;
 	//mode bypass
 	assign c_bp = a;
 	assign d_bp = b;
